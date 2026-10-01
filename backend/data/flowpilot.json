@@ -1,0 +1,1279 @@
+{
+  "users": [
+    {
+      "_id": "cezsrh2mup2u7vv",
+      "id": "cezsrh2mup2u7vv",
+      "name": "Alex Morgan",
+      "email": "employee@flowpilot.ai",
+      "passwordHash": "$2b$10$MugNxYKdlo76Ahkkw2H1BO6zT2deSkyoPWQne4eykE6cBzfzJ/Req",
+      "role": "Employee",
+      "department": "Engineering",
+      "createdAt": "2026-10-01T05:11:43.723Z",
+      "updatedAt": "2026-10-01T05:11:43.723Z"
+    },
+    {
+      "_id": "5je8q3rmup2u7vw",
+      "id": "5je8q3rmup2u7vw",
+      "name": "Sarah Jenkins",
+      "email": "manager@flowpilot.ai",
+      "passwordHash": "$2b$10$MugNxYKdlo76Ahkkw2H1BO6zT2deSkyoPWQne4eykE6cBzfzJ/Req",
+      "role": "Manager",
+      "department": "Engineering Leadership",
+      "createdAt": "2026-10-01T05:11:43.724Z",
+      "updatedAt": "2026-10-01T05:11:43.724Z"
+    },
+    {
+      "_id": "fr19nvpmup2u7vw",
+      "id": "fr19nvpmup2u7vw",
+      "name": "Devon Vance",
+      "email": "admin@flowpilot.ai",
+      "passwordHash": "$2b$10$MugNxYKdlo76Ahkkw2H1BO6zT2deSkyoPWQne4eykE6cBzfzJ/Req",
+      "role": "Admin",
+      "department": "IT Operations & Infrastructure",
+      "createdAt": "2026-10-01T05:11:43.724Z",
+      "updatedAt": "2026-10-01T05:11:43.724Z"
+    }
+  ],
+  "requests": [
+    {
+      "_id": "m5iokgumup2u7vy",
+      "id": "m5iokgumup2u7vy",
+      "userId": "cezsrh2mup2u7vv",
+      "userName": "Alex Morgan",
+      "userEmail": "employee@flowpilot.ai",
+      "rawText": "I need 5 laptops for new hires, budget ₹75,000.",
+      "category": "Hardware & IT Equipment",
+      "structuredData": {
+        "category": "Hardware & IT Equipment",
+        "items": [
+          {
+            "type": "Laptop Computer",
+            "quantity": 5,
+            "description": "5x Core i7 Enterprise Laptops for Q4 new hire engineering cohort"
+          }
+        ],
+        "estimatedAmount": 75000,
+        "currency": "INR",
+        "priority": "Medium",
+        "urgencyReason": "Scheduled start date for onboardees is in 2 weeks",
+        "suggestedApprovalRequired": true,
+        "suggestedApproverRole": "Manager",
+        "sentimentOrIntent": "Standard new hire hardware requisition"
+      },
+      "status": "PENDING_APPROVAL",
+      "policyResult": {
+        "passed": true,
+        "requiresApproval": true,
+        "approvalLevel": "Manager",
+        "reason": "Requires Department Manager authorization (INR 75,000) per corporate spend policy.",
+        "matchedRules": [
+          "POL-02: Standard Tier Requisition (₹15,001 - ₹1,00,000)",
+          "POL-HW: Standard IT Hardware Catalog verification active"
+        ],
+        "budgetStatus": "STANDARD_MANAGER_REQUIRED"
+      },
+      "assignedApproverId": "5je8q3rmup2u7vw",
+      "assignedApproverName": "Sarah Jenkins",
+      "currentStep": "Manager Approval",
+      "workflowSteps": [
+        {
+          "id": "step-1",
+          "name": "Request Created",
+          "status": "DONE",
+          "timestamp": "2026-10-01T04:11:43.726Z",
+          "details": "Requisition submitted by Alex Morgan"
+        },
+        {
+          "id": "step-2",
+          "name": "AI Analysis",
+          "status": "DONE",
+          "timestamp": "2026-10-01T04:13:23.726Z",
+          "details": "Gemini parsed 5 laptop units, category: Hardware, ₹75,000 total"
+        },
+        {
+          "id": "step-3",
+          "name": "Policy Check",
+          "status": "DONE",
+          "timestamp": "2026-10-01T04:15:03.726Z",
+          "details": "Policy verified: Requires Manager authorization"
+        },
+        {
+          "id": "step-4",
+          "name": "Manager Approval",
+          "status": "CURRENT",
+          "timestamp": "2026-10-01T04:16:43.726Z",
+          "details": "Awaiting review from Sarah Jenkins"
+        },
+        {
+          "id": "step-5",
+          "name": "Procurement",
+          "status": "UPCOMING",
+          "timestamp": null,
+          "details": "Purchase Order dispatch"
+        },
+        {
+          "id": "step-6",
+          "name": "Completed",
+          "status": "UPCOMING",
+          "timestamp": null,
+          "details": "Final delivery & inventory check"
+        }
+      ],
+      "createdAt": "2026-10-01T05:11:43.726Z",
+      "updatedAt": "2026-10-01T05:11:43.726Z"
+    },
+    {
+      "_id": "wyvdwbnmup2u7vz",
+      "id": "wyvdwbnmup2u7vz",
+      "userId": "cezsrh2mup2u7vv",
+      "userName": "Alex Morgan",
+      "userEmail": "employee@flowpilot.ai",
+      "rawText": "Ergonomic task chairs (3 units) for the design pod, budget ₹42,000",
+      "category": "Office Infrastructure & Ergonomics",
+      "structuredData": {
+        "category": "Office Infrastructure & Ergonomics",
+        "items": [
+          {
+            "type": "Ergonomic Chair",
+            "quantity": 3,
+            "description": "3x Lumbar-supported mesh task chairs"
+          }
+        ],
+        "estimatedAmount": 42000,
+        "currency": "INR",
+        "priority": "Low",
+        "urgencyReason": "Workstation upgrade for UX designers",
+        "suggestedApprovalRequired": true,
+        "suggestedApproverRole": "Manager",
+        "sentimentOrIntent": "Ergonomics upgrade"
+      },
+      "status": "APPROVED",
+      "policyResult": {
+        "passed": true,
+        "requiresApproval": true,
+        "approvalLevel": "Manager",
+        "reason": "Requires Department Manager authorization per corporate spend policy.",
+        "matchedRules": [
+          "POL-02: Standard Tier Requisition"
+        ],
+        "budgetStatus": "WITHIN_THRESHOLD"
+      },
+      "assignedApproverId": "5je8q3rmup2u7vw",
+      "assignedApproverName": "Sarah Jenkins",
+      "currentStep": "Procurement",
+      "workflowSteps": [
+        {
+          "id": "step-1",
+          "name": "Request Created",
+          "status": "DONE",
+          "timestamp": "2026-09-30T05:11:43.727Z",
+          "details": "Requisition submitted by Alex Morgan"
+        },
+        {
+          "id": "step-2",
+          "name": "AI Analysis",
+          "status": "DONE",
+          "timestamp": "2026-09-30T05:18:23.727Z",
+          "details": "AI parsed 3 ergonomic chairs, ₹42,000"
+        },
+        {
+          "id": "step-3",
+          "name": "Policy Check",
+          "status": "DONE",
+          "timestamp": "2026-09-30T05:35:03.727Z",
+          "details": "Policy verified: Manager level"
+        },
+        {
+          "id": "step-4",
+          "name": "Manager Approval",
+          "status": "DONE",
+          "timestamp": "2026-09-30T17:11:43.727Z",
+          "details": "Approved by Sarah Jenkins: \"Approved. Essential for design team comfort.\""
+        },
+        {
+          "id": "step-5",
+          "name": "Procurement",
+          "status": "CURRENT",
+          "timestamp": "2026-09-30T17:15:03.727Z",
+          "details": "PO-2026-449102 generated and sent to vendor"
+        },
+        {
+          "id": "step-6",
+          "name": "Completed",
+          "status": "UPCOMING",
+          "timestamp": null,
+          "details": "Shipment in transit"
+        }
+      ],
+      "createdAt": "2026-10-01T05:11:43.727Z",
+      "updatedAt": "2026-10-01T05:11:43.727Z"
+    },
+    {
+      "_id": "2dayp27mup2u7w0",
+      "id": "2dayp27mup2u7w0",
+      "userId": "cezsrh2mup2u7vv",
+      "userName": "Alex Morgan",
+      "userEmail": "employee@flowpilot.ai",
+      "rawText": "2x 4K UltraSharp Dell 27-inch monitors for frontend development workstation",
+      "category": "Hardware & IT Equipment",
+      "structuredData": {
+        "category": "Hardware & IT Equipment",
+        "items": [
+          {
+            "type": "4K External Monitor",
+            "quantity": 2,
+            "description": "Dell UltraSharp 27\" USB-C Hub Monitor"
+          }
+        ],
+        "estimatedAmount": 58000,
+        "currency": "INR",
+        "priority": "Medium",
+        "urgencyReason": "Dual monitor setup needed for responsive frontend testing",
+        "suggestedApprovalRequired": true,
+        "suggestedApproverRole": "Manager",
+        "sentimentOrIntent": "Workstation productivity monitor setup"
+      },
+      "status": "COMPLETED",
+      "policyResult": {
+        "passed": true,
+        "requiresApproval": true,
+        "approvalLevel": "Manager",
+        "reason": "Requires Department Manager authorization per corporate spend policy.",
+        "matchedRules": [
+          "POL-02: Standard Tier Requisition"
+        ],
+        "budgetStatus": "WITHIN_THRESHOLD"
+      },
+      "assignedApproverId": "5je8q3rmup2u7vw",
+      "assignedApproverName": "Sarah Jenkins",
+      "currentStep": "Completed",
+      "workflowSteps": [
+        {
+          "id": "step-1",
+          "name": "Request Created",
+          "status": "DONE",
+          "timestamp": "2026-09-29T05:11:43.728Z",
+          "details": "Submitted by Alex Morgan"
+        },
+        {
+          "id": "step-2",
+          "name": "AI Analysis",
+          "status": "DONE",
+          "timestamp": "2026-09-29T05:25:03.728Z",
+          "details": "AI parsed 2x 4K Monitors"
+        },
+        {
+          "id": "step-3",
+          "name": "Policy Check",
+          "status": "DONE",
+          "timestamp": "2026-09-29T05:41:43.728Z",
+          "details": "Policy verified"
+        },
+        {
+          "id": "step-4",
+          "name": "Manager Approval",
+          "status": "DONE",
+          "timestamp": "2026-09-29T11:31:43.728Z",
+          "details": "Approved by Sarah Jenkins"
+        },
+        {
+          "id": "step-5",
+          "name": "Procurement",
+          "status": "DONE",
+          "timestamp": "2026-09-30T05:11:43.728Z",
+          "details": "PO-2026-382910 fulfilled"
+        },
+        {
+          "id": "step-6",
+          "name": "Completed",
+          "status": "DONE",
+          "timestamp": "2026-10-01T01:11:43.728Z",
+          "details": "Delivered to Floor 3 Engineering Desk"
+        }
+      ],
+      "createdAt": "2026-10-01T05:11:43.728Z",
+      "updatedAt": "2026-10-01T05:11:43.728Z"
+    },
+    {
+      "_id": "nvxkdhimup348u4",
+      "id": "nvxkdhimup348u4",
+      "userId": "cezsrh2mup2u7vv",
+      "userName": "Alex Morgan",
+      "userEmail": "employee@flowpilot.ai",
+      "rawText": "I need 5 laptops for new hires, budget ?75,000.",
+      "category": "Hardware & IT Equipment",
+      "structuredData": {
+        "category": "Hardware & IT Equipment",
+        "items": [
+          {
+            "type": "Laptop Computer",
+            "quantity": 5,
+            "description": "5x Laptop Computer requested for project / onboarding"
+          }
+        ],
+        "estimatedAmount": 375000,
+        "currency": "INR",
+        "priority": "High",
+        "urgencyReason": "Identified as urgent or high-value procurement",
+        "suggestedApprovalRequired": true,
+        "suggestedApproverRole": "Director / VP",
+        "sentimentOrIntent": "Business procurement requisition extracted with high confidence"
+      },
+      "status": "COMPLETED",
+      "policyResult": {
+        "passed": true,
+        "requiresApproval": true,
+        "approvalLevel": "Director / VP",
+        "reason": "High-value procurement exceeding ₹1,00,000. Escalated to Director / VP level review per financial governance rules.",
+        "matchedRules": [
+          "POL-03: Capital Expenditure Tier (> ₹1,00,000)",
+          "POL-HW: Standard IT Hardware Catalog verification active"
+        ],
+        "budgetStatus": "HIGH_VALUE_ESCALATION"
+      },
+      "assignedApproverId": "5je8q3rmup2u7vw",
+      "assignedApproverName": "Sarah Jenkins",
+      "currentStep": "Completed",
+      "workflowSteps": [
+        {
+          "id": "step-1",
+          "name": "Request Created",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:19:31.366Z",
+          "details": "Plain language requisition submitted and queued for ingestion"
+        },
+        {
+          "id": "step-2",
+          "name": "AI Analysis",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:19:31.366Z",
+          "details": "Identified 1 item(s) in category: \"Hardware & IT Equipment\" with estimated value INR 3,75,000"
+        },
+        {
+          "id": "step-3",
+          "name": "Policy Check",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:19:31.366Z",
+          "details": "High-value procurement exceeding ₹1,00,000. Escalated to Director / VP level review per financial governance rules."
+        },
+        {
+          "id": "step-4",
+          "name": "Director / VP Approval",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:19:31.599Z",
+          "details": "Authorized by Sarah Jenkins (Manager): \"Approved for Q4 new hire engineering cohort. Please dispatch to primary IT vendor.\""
+        },
+        {
+          "id": "step-5",
+          "name": "Procurement",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:19:31.673Z",
+          "details": "Purchase Order generated. Transmitted to IT Procurement team."
+        },
+        {
+          "id": "step-6",
+          "name": "Completed",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:19:31.673Z",
+          "details": "Assets delivered and confirmed received"
+        }
+      ],
+      "createdAt": "2026-10-01T05:19:31.516Z",
+      "updatedAt": "2026-10-01T05:19:31.673Z"
+    },
+    {
+      "_id": "x8n3bxtmup40g04",
+      "id": "x8n3bxtmup40g04",
+      "userId": "cezsrh2mup2u7vv",
+      "userName": "Alex Morgan",
+      "userEmail": "employee@flowpilot.ai",
+      "rawText": "I need 5 laptops for new hires, budget ₹75,000.",
+      "category": "Hardware & IT Equipment",
+      "structuredData": {
+        "category": "Hardware & IT Equipment",
+        "items": [
+          {
+            "type": "Laptop Computer",
+            "quantity": 5,
+            "description": "5x Laptop Computer requested for project / onboarding"
+          }
+        ],
+        "estimatedAmount": 75000,
+        "currency": "INR",
+        "priority": "Medium",
+        "urgencyReason": "Standard business request timeline",
+        "suggestedApprovalRequired": true,
+        "suggestedApproverRole": "Manager",
+        "sentimentOrIntent": "Business procurement requisition extracted with high confidence"
+      },
+      "status": "COMPLETED",
+      "policyResult": {
+        "passed": true,
+        "requiresApproval": true,
+        "approvalLevel": "Manager",
+        "reason": "Requires Department Manager authorization (INR 75,000) per corporate spend policy.",
+        "matchedRules": [
+          "POL-02: Standard Tier Requisition (₹15,001 - ₹1,00,000)",
+          "POL-HW: Standard IT Hardware Catalog verification active"
+        ],
+        "budgetStatus": "STANDARD_MANAGER_REQUIRED"
+      },
+      "assignedApproverId": "5je8q3rmup2u7vw",
+      "assignedApproverName": "Sarah Jenkins",
+      "currentStep": "Completed",
+      "workflowSteps": [
+        {
+          "id": "step-1",
+          "name": "Request Created",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:44:33.796Z",
+          "details": "Plain language requisition submitted and queued for ingestion"
+        },
+        {
+          "id": "step-2",
+          "name": "AI Analysis",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:44:33.796Z",
+          "details": "Identified 1 item(s) in category: \"Hardware & IT Equipment\" with estimated value INR 75,000"
+        },
+        {
+          "id": "step-3",
+          "name": "Policy Check",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:44:33.796Z",
+          "details": "Requires Department Manager authorization (INR 75,000) per corporate spend policy."
+        },
+        {
+          "id": "step-4",
+          "name": "Manager Approval",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:44:33.803Z",
+          "details": "Authorized by Sarah Jenkins (Manager): \"Approved for Q1 engineering expansion. Proceed with procurement.\""
+        },
+        {
+          "id": "step-5",
+          "name": "Procurement",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:44:33.812Z",
+          "details": "Purchase Order generated. Transmitted to IT Procurement team."
+        },
+        {
+          "id": "step-6",
+          "name": "Completed",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:44:33.812Z",
+          "details": "Assets delivered and confirmed received"
+        }
+      ],
+      "createdAt": "2026-10-01T05:44:33.796Z",
+      "updatedAt": "2026-10-01T05:44:33.812Z"
+    }
+  ],
+  "approvals": [
+    {
+      "_id": "keabeg2mup348wf",
+      "id": "keabeg2mup348wf",
+      "requestId": "nvxkdhimup348u4",
+      "approverId": "5je8q3rmup2u7vw",
+      "approverName": "Sarah Jenkins",
+      "approverRole": "Manager",
+      "decision": "APPROVED",
+      "comment": "Approved for Q4 new hire engineering cohort. Please dispatch to primary IT vendor.",
+      "createdAt": "2026-10-01T05:19:31.599Z",
+      "updatedAt": "2026-10-01T05:19:31.599Z"
+    },
+    {
+      "_id": "u47y8o3mup40g0b",
+      "id": "u47y8o3mup40g0b",
+      "requestId": "x8n3bxtmup40g04",
+      "approverId": "5je8q3rmup2u7vw",
+      "approverName": "Sarah Jenkins",
+      "approverRole": "Manager",
+      "decision": "APPROVED",
+      "comment": "Approved for Q1 engineering expansion. Proceed with procurement.",
+      "createdAt": "2026-10-01T05:44:33.803Z",
+      "updatedAt": "2026-10-01T05:44:33.803Z"
+    }
+  ],
+  "procurementtasks": [
+    {
+      "_id": "zy09e67mup2u7vz",
+      "id": "zy09e67mup2u7vz",
+      "requestId": "wyvdwbnmup2u7vz",
+      "type": "PROCUREMENT",
+      "title": "Procurement for Office Infrastructure & Ergonomics",
+      "status": "IN_PROGRESS",
+      "assignedTo": "Central IT Procurement Desk",
+      "vendor": "Featherlite Corporate Commercial Furnishings",
+      "estimatedDeliveryDate": "Oct 6, 2026",
+      "details": {
+        "items": [
+          {
+            "type": "Ergonomic Task Chair",
+            "quantity": 3,
+            "description": "Lumbar mesh chair"
+          }
+        ],
+        "totalAmount": 42000,
+        "currency": "INR",
+        "poNumber": "PO-2026-449102",
+        "notes": "Vendor has confirmed dispatch for Monday delivery"
+      },
+      "createdAt": "2026-10-01T05:11:43.727Z",
+      "updatedAt": "2026-10-01T05:11:43.727Z"
+    },
+    {
+      "_id": "0se1cyqmup348x9",
+      "id": "0se1cyqmup348x9",
+      "requestId": "nvxkdhimup348u4",
+      "type": "PROCUREMENT",
+      "title": "Procurement for Hardware & IT Equipment",
+      "status": "COMPLETED",
+      "assignedTo": "Central IT Procurement Desk",
+      "vendor": "Dell & Apple Enterprise Fulfillment",
+      "estimatedDeliveryDate": "Oct 3, 2026",
+      "details": {
+        "items": [
+          {
+            "type": "Laptop Computer",
+            "quantity": 5,
+            "description": "5x Laptop Computer requested for project / onboarding"
+          }
+        ],
+        "totalAmount": 375000,
+        "currency": "INR",
+        "poNumber": "PO-2026-872098",
+        "notes": "Automated PO triggered by FlowPilot AI after Manager Approval by Sarah Jenkins"
+      },
+      "createdAt": "2026-10-01T05:19:31.629Z",
+      "updatedAt": "2026-10-01T05:19:31.671Z"
+    },
+    {
+      "_id": "4nljm7dmup40g0e",
+      "id": "4nljm7dmup40g0e",
+      "requestId": "x8n3bxtmup40g04",
+      "type": "PROCUREMENT",
+      "title": "Procurement for Hardware & IT Equipment",
+      "status": "COMPLETED",
+      "assignedTo": "Central IT Procurement Desk",
+      "vendor": "Dell & Apple Enterprise Fulfillment",
+      "estimatedDeliveryDate": "Oct 6, 2026",
+      "details": {
+        "items": [
+          {
+            "type": "Laptop Computer",
+            "quantity": 5,
+            "description": "5x Laptop Computer requested for project / onboarding"
+          }
+        ],
+        "totalAmount": 75000,
+        "currency": "INR",
+        "poNumber": "PO-2026-878817",
+        "notes": "Automated PO triggered by FlowPilot AI after Manager Approval by Sarah Jenkins"
+      },
+      "createdAt": "2026-10-01T05:44:33.806Z",
+      "updatedAt": "2026-10-01T05:44:33.811Z"
+    }
+  ],
+  "notifications": [
+    {
+      "_id": "006xguxmup2u7w0",
+      "id": "006xguxmup2u7w0",
+      "userId": "5je8q3rmup2u7vw",
+      "message": "⚡ Action Required: Alex Morgan requested 5 laptops (INR 75,000) for review.",
+      "type": "ACTION_REQUIRED",
+      "link": "/requests/m5iokgumup2u7vy",
+      "createdAt": "2026-10-01T05:11:43.728Z",
+      "updatedAt": "2026-10-01T05:11:43.728Z"
+    },
+    {
+      "_id": "n8hp2d0mup2u7w1",
+      "id": "n8hp2d0mup2u7w1",
+      "userId": "cezsrh2mup2u7vv",
+      "message": "Requisition \"I need 5 laptops for new hires...\" submitted. AI assigned to Sarah Jenkins for approval.",
+      "type": "INFO",
+      "link": "/requests/m5iokgumup2u7vy",
+      "createdAt": "2026-10-01T05:11:43.729Z",
+      "updatedAt": "2026-10-01T05:11:43.729Z"
+    },
+    {
+      "_id": "6aap3bqmup2u7w2",
+      "id": "6aap3bqmup2u7w2",
+      "userId": "cezsrh2mup2u7vv",
+      "message": "🎉 Great news! Your request for Ergonomic chairs was APPROVED by Sarah Jenkins.",
+      "type": "SUCCESS",
+      "link": "/requests/wyvdwbnmup2u7vz",
+      "createdAt": "2026-10-01T05:11:43.730Z",
+      "updatedAt": "2026-10-01T05:11:43.730Z"
+    },
+    {
+      "_id": "6upd51jmup348u7",
+      "id": "6upd51jmup348u7",
+      "userId": "cezsrh2mup2u7vv",
+      "message": "Requisition created: \"I need 5 laptops for new hires, budget ?75,00...\". AI has routed this to Sarah Jenkins for authorization.",
+      "type": "INFO",
+      "link": "/requests/nvxkdhimup348u4",
+      "createdAt": "2026-10-01T05:19:31.519Z",
+      "updatedAt": "2026-10-01T05:19:31.519Z"
+    },
+    {
+      "_id": "pl4ivc0mup348ua",
+      "id": "pl4ivc0mup348ua",
+      "userId": "5je8q3rmup2u7vw",
+      "message": "⚡ New Approval Required: Alex Morgan requested 1 item(s) (INR 3,75,000).",
+      "type": "ACTION_REQUIRED",
+      "link": "/requests/nvxkdhimup348u4",
+      "createdAt": "2026-10-01T05:19:31.522Z",
+      "updatedAt": "2026-10-01T05:19:31.522Z"
+    },
+    {
+      "_id": "j5q220vmup348xb",
+      "id": "j5q220vmup348xb",
+      "userId": "cezsrh2mup2u7vv",
+      "message": "🎉 Great news! Your request \"I need 5 laptops for new hires, budget ?75,00...\" was APPROVED by Sarah Jenkins. Procurement Order PO-2026-872098 has been opened.",
+      "type": "SUCCESS",
+      "link": "/requests/nvxkdhimup348u4",
+      "createdAt": "2026-10-01T05:19:31.631Z",
+      "updatedAt": "2026-10-01T05:19:31.631Z"
+    },
+    {
+      "_id": "covihtqmup348yk",
+      "id": "covihtqmup348yk",
+      "userId": "cezsrh2mup2u7vv",
+      "message": "📦 Shipment Completed! Your requisition \"I need 5 laptops for new hires, budget ?...\" has arrived.",
+      "type": "SUCCESS",
+      "link": "/requests/nvxkdhimup348u4",
+      "createdAt": "2026-10-01T05:19:31.676Z",
+      "updatedAt": "2026-10-01T05:19:31.676Z"
+    },
+    {
+      "_id": "7vrdgwrmup40g04",
+      "id": "7vrdgwrmup40g04",
+      "userId": "cezsrh2mup2u7vv",
+      "message": "Requisition created: \"I need 5 laptops for new hires, budget ₹75,00...\". AI has routed this to Sarah Jenkins for authorization.",
+      "type": "INFO",
+      "link": "/requests/x8n3bxtmup40g04",
+      "createdAt": "2026-10-01T05:44:33.796Z",
+      "updatedAt": "2026-10-01T05:44:33.796Z"
+    },
+    {
+      "_id": "b878r50mup40g05",
+      "id": "b878r50mup40g05",
+      "userId": "5je8q3rmup2u7vw",
+      "message": "⚡ New Approval Required: Alex Morgan requested 1 item(s) (INR 75,000).",
+      "type": "ACTION_REQUIRED",
+      "link": "/requests/x8n3bxtmup40g04",
+      "createdAt": "2026-10-01T05:44:33.797Z",
+      "updatedAt": "2026-10-01T05:44:33.797Z"
+    },
+    {
+      "_id": "jbvww0cmup40g0f",
+      "id": "jbvww0cmup40g0f",
+      "userId": "cezsrh2mup2u7vv",
+      "message": "🎉 Great news! Your request \"I need 5 laptops for new hires, budget ₹75,00...\" was APPROVED by Sarah Jenkins. Procurement Order PO-2026-878817 has been opened.",
+      "type": "SUCCESS",
+      "link": "/requests/x8n3bxtmup40g04",
+      "createdAt": "2026-10-01T05:44:33.807Z",
+      "updatedAt": "2026-10-01T05:44:33.807Z"
+    },
+    {
+      "_id": "35nosjwmup40g0l",
+      "id": "35nosjwmup40g0l",
+      "userId": "cezsrh2mup2u7vv",
+      "message": "📦 Shipment Completed! Your requisition \"I need 5 laptops for new hires, budget ₹...\" has arrived.",
+      "type": "SUCCESS",
+      "link": "/requests/x8n3bxtmup40g04",
+      "createdAt": "2026-10-01T05:44:33.813Z",
+      "updatedAt": "2026-10-01T05:44:33.813Z"
+    }
+  ],
+  "auditlogs": [
+    {
+      "_id": "7e3zq9jmup2u7w2",
+      "id": "7e3zq9jmup2u7w2",
+      "entityType": "REQUEST",
+      "entityId": "m5iokgumup2u7vy",
+      "action": "CREATED",
+      "actorId": "cezsrh2mup2u7vv",
+      "actorName": "Alex Morgan",
+      "actorRole": "Employee",
+      "summary": "Requisition submitted: \"I need 5 laptops for new hires, budget ₹75,000.\"",
+      "metadata": {
+        "category": "Hardware & IT Equipment",
+        "rawText": "I need 5 laptops for new hires, budget ₹75,000."
+      },
+      "createdAt": "2026-10-01T05:11:43.730Z",
+      "updatedAt": "2026-10-01T05:11:43.730Z"
+    },
+    {
+      "_id": "9twx77emup2u7w2",
+      "id": "9twx77emup2u7w2",
+      "entityType": "REQUEST",
+      "entityId": "m5iokgumup2u7vy",
+      "action": "ANALYZED",
+      "actorId": "SYSTEM",
+      "actorName": "FlowPilot Gemini AI Engine",
+      "actorRole": "SYSTEM",
+      "summary": "AI parsed 5 laptops, identified ₹75,000 budget, set Medium priority",
+      "metadata": {
+        "category": "Hardware & IT Equipment",
+        "items": [
+          {
+            "type": "Laptop Computer",
+            "quantity": 5,
+            "description": "5x Core i7 Enterprise Laptops for Q4 new hire engineering cohort"
+          }
+        ],
+        "estimatedAmount": 75000,
+        "currency": "INR",
+        "priority": "Medium",
+        "urgencyReason": "Scheduled start date for onboardees is in 2 weeks",
+        "suggestedApprovalRequired": true,
+        "suggestedApproverRole": "Manager",
+        "sentimentOrIntent": "Standard new hire hardware requisition"
+      },
+      "createdAt": "2026-10-01T05:11:43.730Z",
+      "updatedAt": "2026-10-01T05:11:43.730Z"
+    },
+    {
+      "_id": "pe8cih9mup2u7w3",
+      "id": "pe8cih9mup2u7w3",
+      "entityType": "REQUEST",
+      "entityId": "m5iokgumup2u7vy",
+      "action": "POLICY_EVALUATED",
+      "actorId": "SYSTEM",
+      "actorName": "FlowPilot Policy Matrix",
+      "actorRole": "SYSTEM",
+      "summary": "Policy verified: Requires Manager Authorization per Policy Tier 2",
+      "metadata": {
+        "passed": true,
+        "requiresApproval": true,
+        "approvalLevel": "Manager",
+        "reason": "Requires Department Manager authorization (INR 75,000) per corporate spend policy.",
+        "matchedRules": [
+          "POL-02: Standard Tier Requisition (₹15,001 - ₹1,00,000)",
+          "POL-HW: Standard IT Hardware Catalog verification active"
+        ],
+        "budgetStatus": "STANDARD_MANAGER_REQUIRED"
+      },
+      "createdAt": "2026-10-01T05:11:43.731Z",
+      "updatedAt": "2026-10-01T05:11:43.731Z"
+    },
+    {
+      "_id": "vrm1nw4mup2u7w4",
+      "id": "vrm1nw4mup2u7w4",
+      "entityType": "REQUEST",
+      "entityId": "wyvdwbnmup2u7vz",
+      "action": "APPROVED",
+      "actorId": "5je8q3rmup2u7vw",
+      "actorName": "Sarah Jenkins",
+      "actorRole": "Manager",
+      "summary": "Manager Sarah Jenkins approved request for Ergonomic Chairs",
+      "metadata": {
+        "comment": "Approved. Essential for design team comfort."
+      },
+      "createdAt": "2026-10-01T05:11:43.732Z",
+      "updatedAt": "2026-10-01T05:11:43.732Z"
+    },
+    {
+      "_id": "ffw9evxmup2u7w4",
+      "id": "ffw9evxmup2u7w4",
+      "entityType": "TASK",
+      "entityId": "zy09e67mup2u7vz",
+      "action": "TASK_GENERATED",
+      "actorId": "SYSTEM",
+      "actorName": "FlowPilot Automation Dispatcher",
+      "actorRole": "SYSTEM",
+      "summary": "Dispatched Purchase Order PO-2026-449102 to Featherlite Furnishings",
+      "metadata": {
+        "poNumber": "PO-2026-449102",
+        "vendor": "Featherlite Corporate Commercial Furnishings"
+      },
+      "createdAt": "2026-10-01T05:11:43.732Z",
+      "updatedAt": "2026-10-01T05:11:43.732Z"
+    },
+    {
+      "_id": "hpfwrekmup348uc",
+      "id": "hpfwrekmup348uc",
+      "entityType": "REQUEST",
+      "entityId": "nvxkdhimup348u4",
+      "action": "CREATED",
+      "actorId": "cezsrh2mup2u7vv",
+      "actorName": "Alex Morgan",
+      "actorRole": "Employee",
+      "summary": "Employee submitted request: \"I need 5 laptops for new hires, budget ?75,000....\"",
+      "metadata": {
+        "rawText": "I need 5 laptops for new hires, budget ?75,000."
+      },
+      "createdAt": "2026-10-01T05:19:31.524Z",
+      "updatedAt": "2026-10-01T05:19:31.524Z"
+    },
+    {
+      "_id": "yheu1zemup348ue",
+      "id": "yheu1zemup348ue",
+      "entityType": "REQUEST",
+      "entityId": "nvxkdhimup348u4",
+      "action": "ANALYZED",
+      "actorId": "SYSTEM",
+      "actorName": "FlowPilot Gemini AI Engine",
+      "actorRole": "SYSTEM",
+      "summary": "AI parsed 1 item(s), estimated value INR 375000.",
+      "metadata": {
+        "category": "Hardware & IT Equipment",
+        "items": [
+          {
+            "type": "Laptop Computer",
+            "quantity": 5,
+            "description": "5x Laptop Computer requested for project / onboarding"
+          }
+        ],
+        "estimatedAmount": 375000,
+        "currency": "INR",
+        "priority": "High",
+        "urgencyReason": "Identified as urgent or high-value procurement",
+        "suggestedApprovalRequired": true,
+        "suggestedApproverRole": "Director / VP",
+        "sentimentOrIntent": "Business procurement requisition extracted with high confidence"
+      },
+      "createdAt": "2026-10-01T05:19:31.526Z",
+      "updatedAt": "2026-10-01T05:19:31.526Z"
+    },
+    {
+      "_id": "87af67kmup348ug",
+      "id": "87af67kmup348ug",
+      "entityType": "REQUEST",
+      "entityId": "nvxkdhimup348u4",
+      "action": "POLICY_EVALUATED",
+      "actorId": "SYSTEM",
+      "actorName": "FlowPilot Policy Matrix",
+      "actorRole": "SYSTEM",
+      "summary": "Policy check: Director / VP Approval Required (HIGH_VALUE_ESCALATION).",
+      "metadata": {
+        "passed": true,
+        "requiresApproval": true,
+        "approvalLevel": "Director / VP",
+        "reason": "High-value procurement exceeding ₹1,00,000. Escalated to Director / VP level review per financial governance rules.",
+        "matchedRules": [
+          "POL-03: Capital Expenditure Tier (> ₹1,00,000)",
+          "POL-HW: Standard IT Hardware Catalog verification active"
+        ],
+        "budgetStatus": "HIGH_VALUE_ESCALATION"
+      },
+      "createdAt": "2026-10-01T05:19:31.528Z",
+      "updatedAt": "2026-10-01T05:19:31.528Z"
+    },
+    {
+      "_id": "martnflmup348xd",
+      "id": "martnflmup348xd",
+      "entityType": "REQUEST",
+      "entityId": "nvxkdhimup348u4",
+      "action": "APPROVED",
+      "actorId": "5je8q3rmup2u7vw",
+      "actorName": "Sarah Jenkins",
+      "actorRole": "Manager",
+      "summary": "Request approved by Sarah Jenkins (Manager). Created Procurement Task PO-2026-872098.",
+      "metadata": {
+        "decision": "APPROVED",
+        "comment": "Approved for Q4 new hire engineering cohort. Please dispatch to primary IT vendor.",
+        "poNumber": "PO-2026-872098",
+        "taskId": "0se1cyqmup348x9"
+      },
+      "createdAt": "2026-10-01T05:19:31.633Z",
+      "updatedAt": "2026-10-01T05:19:31.633Z"
+    },
+    {
+      "_id": "ko69vtqmup348xf",
+      "id": "ko69vtqmup348xf",
+      "entityType": "TASK",
+      "entityId": "0se1cyqmup348x9",
+      "action": "TASK_GENERATED",
+      "actorId": "SYSTEM",
+      "actorName": "FlowPilot Automation Engine",
+      "actorRole": "SYSTEM",
+      "summary": "Downstream Procurement Order PO-2026-872098 created automatically for Hardware & IT Equipment.",
+      "metadata": {
+        "poNumber": "PO-2026-872098",
+        "estimatedDeliveryDate": "Oct 3, 2026"
+      },
+      "createdAt": "2026-10-01T05:19:31.635Z",
+      "updatedAt": "2026-10-01T05:19:31.635Z"
+    },
+    {
+      "_id": "f6jk848mup348ym",
+      "id": "f6jk848mup348ym",
+      "entityType": "TASK",
+      "entityId": "0se1cyqmup348x9",
+      "action": "COMPLETED",
+      "actorId": "5je8q3rmup2u7vw",
+      "actorName": "Sarah Jenkins",
+      "actorRole": "Manager",
+      "summary": "Procurement fulfillment completed for Request #nvxkdhimup348u4.",
+      "metadata": {
+        "newStatus": "COMPLETED"
+      },
+      "createdAt": "2026-10-01T05:19:31.678Z",
+      "updatedAt": "2026-10-01T05:19:31.678Z"
+    },
+    {
+      "_id": "4y940v2mup40g05",
+      "id": "4y940v2mup40g05",
+      "entityType": "REQUEST",
+      "entityId": "x8n3bxtmup40g04",
+      "action": "CREATED",
+      "actorId": "cezsrh2mup2u7vv",
+      "actorName": "Alex Morgan",
+      "actorRole": "Employee",
+      "summary": "Employee submitted request: \"I need 5 laptops for new hires, budget ₹75,000....\"",
+      "metadata": {
+        "rawText": "I need 5 laptops for new hires, budget ₹75,000."
+      },
+      "createdAt": "2026-10-01T05:44:33.797Z",
+      "updatedAt": "2026-10-01T05:44:33.797Z"
+    },
+    {
+      "_id": "8ybqtgrmup40g06",
+      "id": "8ybqtgrmup40g06",
+      "entityType": "REQUEST",
+      "entityId": "x8n3bxtmup40g04",
+      "action": "ANALYZED",
+      "actorId": "SYSTEM",
+      "actorName": "FlowPilot Gemini AI Engine",
+      "actorRole": "SYSTEM",
+      "summary": "AI parsed 1 item(s), estimated value INR 75000.",
+      "metadata": {
+        "category": "Hardware & IT Equipment",
+        "items": [
+          {
+            "type": "Laptop Computer",
+            "quantity": 5,
+            "description": "5x Laptop Computer requested for project / onboarding"
+          }
+        ],
+        "estimatedAmount": 75000,
+        "currency": "INR",
+        "priority": "Medium",
+        "urgencyReason": "Standard business request timeline",
+        "suggestedApprovalRequired": true,
+        "suggestedApproverRole": "Manager",
+        "sentimentOrIntent": "Business procurement requisition extracted with high confidence"
+      },
+      "createdAt": "2026-10-01T05:44:33.798Z",
+      "updatedAt": "2026-10-01T05:44:33.798Z"
+    },
+    {
+      "_id": "x7glfdtmup40g07",
+      "id": "x7glfdtmup40g07",
+      "entityType": "REQUEST",
+      "entityId": "x8n3bxtmup40g04",
+      "action": "POLICY_EVALUATED",
+      "actorId": "SYSTEM",
+      "actorName": "FlowPilot Policy Matrix",
+      "actorRole": "SYSTEM",
+      "summary": "Policy check: Manager Approval Required (STANDARD_MANAGER_REQUIRED).",
+      "metadata": {
+        "passed": true,
+        "requiresApproval": true,
+        "approvalLevel": "Manager",
+        "reason": "Requires Department Manager authorization (INR 75,000) per corporate spend policy.",
+        "matchedRules": [
+          "POL-02: Standard Tier Requisition (₹15,001 - ₹1,00,000)",
+          "POL-HW: Standard IT Hardware Catalog verification active"
+        ],
+        "budgetStatus": "STANDARD_MANAGER_REQUIRED"
+      },
+      "createdAt": "2026-10-01T05:44:33.799Z",
+      "updatedAt": "2026-10-01T05:44:33.799Z"
+    },
+    {
+      "_id": "dk31lpxmup40g0f",
+      "id": "dk31lpxmup40g0f",
+      "entityType": "REQUEST",
+      "entityId": "x8n3bxtmup40g04",
+      "action": "APPROVED",
+      "actorId": "5je8q3rmup2u7vw",
+      "actorName": "Sarah Jenkins",
+      "actorRole": "Manager",
+      "summary": "Request approved by Sarah Jenkins (Manager). Created Procurement Task PO-2026-878817.",
+      "metadata": {
+        "decision": "APPROVED",
+        "comment": "Approved for Q1 engineering expansion. Proceed with procurement.",
+        "poNumber": "PO-2026-878817",
+        "taskId": "4nljm7dmup40g0e"
+      },
+      "createdAt": "2026-10-01T05:44:33.807Z",
+      "updatedAt": "2026-10-01T05:44:33.807Z"
+    },
+    {
+      "_id": "6zm8rl3mup40g0g",
+      "id": "6zm8rl3mup40g0g",
+      "entityType": "TASK",
+      "entityId": "4nljm7dmup40g0e",
+      "action": "TASK_GENERATED",
+      "actorId": "SYSTEM",
+      "actorName": "FlowPilot Automation Engine",
+      "actorRole": "SYSTEM",
+      "summary": "Downstream Procurement Order PO-2026-878817 created automatically for Hardware & IT Equipment.",
+      "metadata": {
+        "poNumber": "PO-2026-878817",
+        "estimatedDeliveryDate": "Oct 6, 2026"
+      },
+      "createdAt": "2026-10-01T05:44:33.808Z",
+      "updatedAt": "2026-10-01T05:44:33.808Z"
+    },
+    {
+      "_id": "2r46pzpmup40g0l",
+      "id": "2r46pzpmup40g0l",
+      "entityType": "TASK",
+      "entityId": "4nljm7dmup40g0e",
+      "action": "COMPLETED",
+      "actorId": "5je8q3rmup2u7vw",
+      "actorName": "Sarah Jenkins",
+      "actorRole": "Manager",
+      "summary": "Procurement fulfillment completed for Request #x8n3bxtmup40g04.",
+      "metadata": {
+        "newStatus": "COMPLETED"
+      },
+      "createdAt": "2026-10-01T05:44:33.813Z",
+      "updatedAt": "2026-10-01T05:44:33.813Z"
+    },
+    {
+      "_id": "qgbxqjpmup40g0s",
+      "id": "qgbxqjpmup40g0s",
+      "entityType": "WORKFLOW",
+      "entityId": "r1fjg3imup40g0r",
+      "action": "CREATED",
+      "actorId": "fr19nvpmup2u7vw",
+      "actorName": "Devon Vance",
+      "actorRole": "Admin",
+      "summary": "Admin created workflow template: \"Employee IT Hardware & Laptop Provisioning\"",
+      "metadata": {
+        "name": "Employee IT Hardware & Laptop Provisioning",
+        "category": "IT Procurement"
+      },
+      "createdAt": "2026-10-01T05:44:33.820Z",
+      "updatedAt": "2026-10-01T05:44:33.820Z"
+    }
+  ],
+  "workflowtemplates": [
+    {
+      "_id": "yfzfg4cmup2u7vx",
+      "id": "yfzfg4cmup2u7vx",
+      "name": "Employee Laptop & Hardware Provisioning",
+      "category": "IT Procurement",
+      "description": "Standard end-to-end procurement and asset allocation workflow for employee developer laptops and hardware.",
+      "isActive": true,
+      "createdByName": "Devon Vance",
+      "definition": {
+        "trigger": "Plain-language employee hardware requisition",
+        "classificationNode": {
+          "model": "Gemini 1.5 Flash",
+          "features": [
+            "Quantity extraction",
+            "Specs classification",
+            "Budget normalization"
+          ]
+        },
+        "policyRules": [
+          {
+            "ruleId": "POL-01",
+            "name": "Spend Threshold Check",
+            "condition": "Amount > ₹25,000",
+            "action": "Route to Direct Department Manager"
+          },
+          {
+            "ruleId": "POL-02",
+            "name": "Approved Vendor Routing",
+            "condition": "Brand in [Apple, Dell, Lenovo]",
+            "action": "Assign enterprise catalog pricing"
+          }
+        ],
+        "approvalSteps": [
+          {
+            "stepIndex": 1,
+            "role": "Engineering Manager",
+            "timeoutHours": 24,
+            "autoEscalate": true
+          }
+        ],
+        "downstreamTasks": [
+          {
+            "task": "Dispatch Automated Purchase Order",
+            "system": "ERP Procurement Engine",
+            "status": "Automated"
+          },
+          {
+            "task": "Asset Tag & MDM Enrollment",
+            "system": "Jamf / Intune MDM",
+            "status": "Automated"
+          }
+        ],
+        "notifications": [
+          {
+            "channel": "In-App Portal",
+            "target": "Requester & Approver"
+          },
+          {
+            "channel": "Slack #procurement-alerts",
+            "target": "IT Helpdesk"
+          }
+        ]
+      },
+      "createdAt": "2026-10-01T05:11:43.725Z",
+      "updatedAt": "2026-10-01T05:11:43.725Z"
+    },
+    {
+      "_id": "efc1i3rmup2u7vx",
+      "id": "efc1i3rmup2u7vx",
+      "name": "SaaS Tool & Cloud Software License Approval",
+      "category": "Software Operations",
+      "description": "Security compliance and budget verification for dev tools, Figma seats, GitHub Copilot, and cloud licenses.",
+      "isActive": true,
+      "createdByName": "Devon Vance",
+      "definition": {
+        "trigger": "Employee software license request",
+        "classificationNode": {
+          "model": "Gemini 1.5 Flash",
+          "features": [
+            "License Seat Count",
+            "SOC2 / Vendor Security Audit",
+            "Pricing Schedule"
+          ]
+        },
+        "policyRules": [
+          {
+            "ruleId": "SEC-01",
+            "name": "SOC-2 Compliance Verification",
+            "condition": "Vendor meets ISO/SOC2",
+            "action": "Allow provisioning"
+          },
+          {
+            "ruleId": "BUD-02",
+            "name": "Department Budget Head Check",
+            "condition": "Annual Cost > $1,000",
+            "action": "VP Approval Required"
+          }
+        ],
+        "approvalSteps": [
+          {
+            "stepIndex": 1,
+            "role": "Department Manager",
+            "timeoutHours": 12,
+            "autoEscalate": false
+          },
+          {
+            "stepIndex": 2,
+            "role": "InfoSec Compliance Lead",
+            "timeoutHours": 24,
+            "autoEscalate": true
+          }
+        ],
+        "downstreamTasks": [
+          {
+            "task": "Okta SSO Provisioning",
+            "system": "Identity Provider API",
+            "status": "Automated"
+          }
+        ],
+        "notifications": [
+          {
+            "channel": "In-App Notification",
+            "target": "Employee"
+          },
+          {
+            "channel": "Slack",
+            "target": "#infosec-approvals"
+          }
+        ]
+      },
+      "createdAt": "2026-10-01T05:11:43.725Z",
+      "updatedAt": "2026-10-01T05:11:43.725Z"
+    },
+    {
+      "_id": "r1fjg3imup40g0r",
+      "id": "r1fjg3imup40g0r",
+      "name": "Employee IT Hardware & Laptop Provisioning",
+      "description": "I want to automate employee laptop requests.",
+      "category": "IT Procurement",
+      "definition": {
+        "trigger": "Employee Plain Language Requisition (Web Form / Slack / API)",
+        "classificationNode": {
+          "model": "Gemini 1.5 Pro / Flash",
+          "features": [
+            "Entity Extraction",
+            "Quantity & Currency Normalization",
+            "Sentiment & Intent Classification"
+          ]
+        },
+        "policyRules": [
+          {
+            "ruleId": "PR-101",
+            "name": "Spend Threshold Verification",
+            "condition": "estimatedAmount > 25,000 INR",
+            "action": "Escalate to Direct Department Manager"
+          },
+          {
+            "ruleId": "PR-102",
+            "name": "High-Value Executive Check",
+            "condition": "estimatedAmount > 1,00,000 INR",
+            "action": "Require Secondary VP / Finance Review"
+          },
+          {
+            "ruleId": "PR-103",
+            "name": "Approved Vendor Whitelist",
+            "condition": "Vendor in [Dell, Apple, Lenovo, AWS, Microsoft]",
+            "action": "Auto-route to preferred enterprise catalog"
+          }
+        ],
+        "approvalSteps": [
+          {
+            "stepIndex": 1,
+            "role": "Reporting Manager",
+            "timeoutHours": 24,
+            "autoEscalate": true
+          },
+          {
+            "stepIndex": 2,
+            "role": "Finance Controller",
+            "condition": "amount > 100000",
+            "timeoutHours": 48
+          }
+        ],
+        "downstreamTasks": [
+          {
+            "task": "Purchase Order Generation",
+            "system": "ERP / Procurement API",
+            "status": "Automated"
+          },
+          {
+            "task": "Asset Tag Allocation",
+            "system": "IT Inventory Manager",
+            "status": "Automated"
+          },
+          {
+            "task": "Courier Dispatch Tracking",
+            "system": "Logistics Partner",
+            "status": "Tracked"
+          }
+        ],
+        "notifications": [
+          {
+            "channel": "In-App Web Dashboard",
+            "target": "Requester & Approver"
+          },
+          {
+            "channel": "Email Digest",
+            "target": "IT Procurement Team"
+          },
+          {
+            "channel": "Slack #it-alerts",
+            "target": "Operations Channel"
+          }
+        ]
+      },
+      "isActive": true,
+      "createdByName": "Devon Vance",
+      "createdAt": "2026-10-01T05:44:33.819Z",
+      "updatedAt": "2026-10-01T05:44:33.819Z"
+    }
+  ]
+}
