@@ -1,0 +1,14 @@
+{
+  "name": "flowpilot-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FlowPilot AI - Enterprise Intelligent Workflow Automation",
+  "scripts": {
+    "install:all": "npm --prefix backend install && npm --prefix frontend install",
+    "build": "npm --prefix frontend install && npm --prefix frontend run build && npm --prefix backend install",
+    "start": "npm --prefix backend start"
+  },
+  "keywords": ["ai", "workflow", "automation", "hackathon"],
+  "author": "VASUDEV",
+  "license": "MIT"
+}

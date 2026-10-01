@@ -46,6 +46,19 @@ app.use('/api/audit-logs', auditLogRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/workflow-templates', workflowRoutes);
 
+const path = require('path');
+const fs = require('fs');
+
+// Serve static frontend build if present (e.g. unified deployment)
+const frontendDistPath = path.resolve(__dirname, '../../frontend/dist');
+if (fs.existsSync(frontendDistPath)) {
+  app.use(express.static(frontendDistPath));
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) return next();
+    res.sendFile(path.join(frontendDistPath, 'index.html'));
+  });
+}
+
 // 404 handler for unknown API routes
 app.use('/api/*', (req, res) => {
   res.status(404).json({ success: false, message: `Route not found: ${req.method} ${req.originalUrl}` });
