@@ -4,62 +4,437 @@
 
 @layer base {
   :root {
+    color-scheme: light;
+    --theme-bg-light: #f8fafc;
+    --theme-bg-dark: #090d16;
+  }
+
+  .dark {
     color-scheme: dark;
   }
   
   body {
+    background-color: #f8fafc;
+    color: #0f172a;
+    background-image: radial-gradient(#e2e8f0 1.2px, transparent 1.2px);
+    background-size: 24px 24px;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  .dark body {
     background-color: #090d16;
-    color: #f1f5f9;
+    color: #f8fafc;
+    background-image: radial-gradient(#1e293b 1.2px, transparent 1.2px);
+  }
+
+  /* ----------------------------------------------------
+     THEME 2: GLASSMORPHISM AMBIENT BODY
+  ---------------------------------------------------- */
+  [data-visual-theme="glassmorphism"] body {
+    background-color: #f8fafc;
+    background-image: 
+      radial-gradient(at 15% 15%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+      radial-gradient(at 85% 20%, rgba(59, 130, 246, 0.07) 0px, transparent 50%),
+      radial-gradient(at 50% 85%, rgba(168, 85, 247, 0.06) 0px, transparent 50%),
+      radial-gradient(#e2e8f0 1.2px, transparent 1.2px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 24px 24px;
+    background-attachment: fixed;
+  }
+
+  .dark[data-visual-theme="glassmorphism"] body,
+  [data-visual-theme="glassmorphism"].dark body {
+    background-color: #070b14;
+    background-image: 
+      radial-gradient(at 15% 15%, rgba(99, 102, 241, 0.16) 0px, transparent 55%),
+      radial-gradient(at 85% 25%, rgba(139, 92, 246, 0.14) 0px, transparent 55%),
+      radial-gradient(at 50% 80%, rgba(14, 165, 233, 0.1) 0px, transparent 55%),
+      radial-gradient(#1e293b 1.2px, transparent 1.2px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 24px 24px;
+    background-attachment: fixed;
+  }
+
+  /* ----------------------------------------------------
+     THEME 3: NEUMORPHISM / SOFT UI BASE BODY
+  ---------------------------------------------------- */
+  [data-visual-theme="neumorphism"] body {
+    background-color: #EEF1F7 !important;
+    background-image: none !important;
+    color: #0f172a;
+  }
+
+  .dark[data-visual-theme="neumorphism"] body,
+  [data-visual-theme="neumorphism"].dark body {
+    background-color: #121727 !important;
+    background-image: none !important;
+    color: #f8fafc;
+  }
+
+  /* Smooth transition on theme switch (if motion not reduced) */
+  .theme-switching,
+  .theme-switching * {
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, color 0.2s ease !important;
+  }
+
+  /* Reduced Motion handling */
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  .reduce-motion,
+  .reduce-motion * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
 }
 
-/* Glassmorphism & Surface Utilities */
+/* ====================================================
+   THEME 2: GLASSMORPHISM SURFACES & PANELS
+==================================================== */
+[data-visual-theme="glassmorphism"] header {
+  background: rgba(255, 255, 255, 0.78) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.04) !important;
+}
+
+.dark[data-visual-theme="glassmorphism"] header,
+[data-visual-theme="glassmorphism"].dark header {
+  background: rgba(15, 23, 42, 0.72) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Glassmorphism Cards across application */
+[data-visual-theme="glassmorphism"] .bg-white:not(button):not(input):not(.badge-solid) {
+  background: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(16px) saturate(170%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(170%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.8), 0 8px 32px 0 rgba(99, 102, 241, 0.07), 0 2px 6px 0 rgba(0, 0, 0, 0.02) !important;
+}
+
+.dark[data-visual-theme="glassmorphism"] .dark\:bg-slate-900:not(button):not(input):not(.badge-solid),
+[data-visual-theme="glassmorphism"].dark .dark\:bg-slate-900:not(button):not(input):not(.badge-solid) {
+  background: rgba(15, 23, 42, 0.7) !important;
+  backdrop-filter: blur(16px) saturate(170%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(170%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.12), 0 8px 32px 0 rgba(0, 0, 0, 0.45), 0 0 20px -5px rgba(99, 102, 241, 0.15) !important;
+}
+
+/* Glassmorphism Modals & Drawers */
+[data-visual-theme="glassmorphism"] [role="dialog"] > div {
+  background: rgba(255, 255, 255, 0.90) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.9), 0 20px 50px -10px rgba(15, 23, 42, 0.18) !important;
+}
+
+.dark[data-visual-theme="glassmorphism"] [role="dialog"] > div,
+[data-visual-theme="glassmorphism"].dark [role="dialog"] > div {
+  background: rgba(15, 23, 42, 0.88) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15), 0 20px 50px -10px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Glassmorphism Floating Menus & Dropdowns */
+[data-visual-theme="glassmorphism"] .shadow-xl,
+[data-visual-theme="glassmorphism"] .shadow-2xl {
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+}
+
+/* Glassmorphism Table High-Contrast Readability Guarantee */
+[data-visual-theme="glassmorphism"] table tbody tr {
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+}
+[data-visual-theme="glassmorphism"] table tbody tr:hover {
+  background-color: rgba(241, 245, 249, 0.75) !important;
+}
+.dark[data-visual-theme="glassmorphism"] table tbody tr:hover,
+[data-visual-theme="glassmorphism"].dark table tbody tr:hover {
+  background-color: rgba(30, 41, 59, 0.6) !important;
+}
+
+/* Reduced transparency accessibility fallback */
+@media (prefers-reduced-transparency: reduce) {
+  [data-visual-theme="glassmorphism"] header,
+  [data-visual-theme="glassmorphism"] .bg-white,
+  [data-visual-theme="glassmorphism"] [role="dialog"] > div {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-color: #ffffff !important;
+  }
+
+  .dark[data-visual-theme="glassmorphism"] header,
+  .dark[data-visual-theme="glassmorphism"] .dark\:bg-slate-900,
+  .dark[data-visual-theme="glassmorphism"] [role="dialog"] > div {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-color: #0f172a !important;
+  }
+}
+
+
+/* ====================================================
+   THEME 3: NEUMORPHISM / SOFT UI SURFACES
+==================================================== */
+/* Neumorphism Base Overrides for Cards & Containers */
+[data-visual-theme="neumorphism"] .bg-white:not(button):not(input):not(.badge-solid) {
+  background-color: #EEF1F7 !important;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 7px 7px 16px #d1d9e6, -7px -7px 16px #ffffff !important;
+}
+
+.dark[data-visual-theme="neumorphism"] .dark\:bg-slate-900:not(button):not(input):not(.badge-solid),
+[data-visual-theme="neumorphism"].dark .dark\:bg-slate-900:not(button):not(input):not(.badge-solid) {
+  background-color: #121727 !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 6px 6px 14px #070a12, -6px -6px 14px #1c243c !important;
+}
+
+/* Neumorphism Navbar */
+[data-visual-theme="neumorphism"] header {
+  background-color: #EEF1F7 !important;
+  border-bottom: 1px solid #d1d9e6 !important;
+  box-shadow: 0 4px 12px rgba(163, 177, 198, 0.35) !important;
+}
+
+.dark[data-visual-theme="neumorphism"] header,
+[data-visual-theme="neumorphism"].dark header {
+  background-color: #121727 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Neumorphic Tactical Raised Buttons & Interactive Chips */
+[data-visual-theme="neumorphism"] .neu-raised {
+  background: #EEF1F7;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 3px 3px 7px #d1d9e6, -3px -3px 7px #ffffff;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-visual-theme="neumorphism"] .neu-raised:hover {
+  box-shadow: 5px 5px 11px #d1d9e6, -5px -5px 11px #ffffff;
+  transform: translateY(-1px);
+}
+[data-visual-theme="neumorphism"] .neu-raised:active {
+  box-shadow: inset 2px 2px 5px #d1d9e6, inset -2px -2px 5px #ffffff !important;
+  transform: translateY(0);
+}
+
+.dark[data-visual-theme="neumorphism"] .neu-raised,
+[data-visual-theme="neumorphism"].dark .neu-raised {
+  background: #121727;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 3px 3px 7px #070a12, -3px -3px 7px #1c243c;
+}
+.dark[data-visual-theme="neumorphism"] .neu-raised:hover,
+[data-visual-theme="neumorphism"].dark .neu-raised:hover {
+  box-shadow: 5px 5px 11px #070a12, -5px -5px 11px #1c243c;
+}
+.dark[data-visual-theme="neumorphism"] .neu-raised:active,
+[data-visual-theme="neumorphism"].dark .neu-raised:active {
+  box-shadow: inset 2px 2px 5px #070a12, inset -2px -2px 5px #1c243c !important;
+}
+
+/* Neumorphic Inset / Pressed Controls (Inputs, Search Boxes) */
+[data-visual-theme="neumorphism"] .neu-inset,
+[data-visual-theme="neumorphism"] input[type="text"]:not(.neu-exclude),
+[data-visual-theme="neumorphism"] select:not(.neu-exclude) {
+  background-color: #EEF1F7 !important;
+  border: 1px solid #d1d9e6 !important;
+  box-shadow: inset 2px 2px 5px #d1d9e6, inset -2px -2px 5px #ffffff !important;
+}
+
+.dark[data-visual-theme="neumorphism"] .neu-inset,
+.dark[data-visual-theme="neumorphism"] input[type="text"]:not(.neu-exclude),
+.dark[data-visual-theme="neumorphism"] select:not(.neu-exclude),
+[data-visual-theme="neumorphism"].dark input[type="text"]:not(.neu-exclude),
+[data-visual-theme="neumorphism"].dark select:not(.neu-exclude) {
+  background-color: #121727 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: inset 2px 2px 5px #070a12, inset -2px -2px 5px #1c243c !important;
+}
+
+/* Neumorphic Focus Ring */
+[data-visual-theme="neumorphism"] *:focus-visible {
+  outline: none !important;
+  ring: 2px solid #6366f1 !important;
+  ring-offset: 2px !important;
+}
+
+/* Neumorphic Sliders (Lighting Modes) */
+[data-visual-theme="neumorphism"] input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  background: #e2e8f0 !important;
+  border-radius: 9999px;
+  box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #ffffff;
+  outline: none;
+}
+[data-visual-theme="neumorphism"] input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #6366f1;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px #d1d9e6, -2px -2px 5px #ffffff;
+  border: 2px solid #ffffff;
+  transition: transform 0.15s ease;
+}
+[data-visual-theme="neumorphism"] input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+.dark[data-visual-theme="neumorphism"] input[type="range"],
+[data-visual-theme="neumorphism"].dark input[type="range"] {
+  background: #0d121f !important;
+  box-shadow: inset 2px 2px 4px #070a12, inset -2px -2px 4px #1c243c;
+}
+.dark[data-visual-theme="neumorphism"] input[type="range"]::-webkit-slider-thumb,
+[data-visual-theme="neumorphism"].dark input[type="range"]::-webkit-slider-thumb {
+  box-shadow: 2px 2px 5px #070a12, -2px -2px 5px #1c243c;
+  border: 2px solid #1e293b;
+}
+
+/* Neumorphic Metric Icon Recess */
+[data-visual-theme="neumorphism"] .group .p-3.rounded-2xl {
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.06), inset -2px -2px 4px rgba(255, 255, 255, 0.9);
+}
+.dark[data-visual-theme="neumorphism"] .group .p-3.rounded-2xl,
+[data-visual-theme="neumorphism"].dark .group .p-3.rounded-2xl {
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.35), inset -2px -2px 4px rgba(255, 255, 255, 0.05);
+}
+
+/* CRITICAL PRESERVATION: Status Badges & Tables retain high clarity across all themes */
+span[role="status"] {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Ensure data tables stay clean, solid, and high-contrast across all themes */
+[data-visual-theme="neumorphism"] table tbody tr {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+[data-visual-theme="neumorphism"] table tbody tr:hover {
+  background-color: rgba(226, 232, 240, 0.6) !important;
+}
+.dark[data-visual-theme="neumorphism"] table tbody tr:hover,
+[data-visual-theme="neumorphism"].dark table tbody tr:hover {
+  background-color: rgba(30, 41, 59, 0.6) !important;
+}
+
+
+/* ====================================================
+   CLEAN ENTERPRISE GLASS UTILITIES
+==================================================== */
 @layer components {
   .glass-card {
-    background: rgba(15, 23, 42, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+  }
+
+  .dark .glass-card {
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(51, 65, 85, 0.7);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
   }
 
   .glass-card-hover {
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .glass-card-hover:hover {
-    border-color: rgba(99, 102, 241, 0.4);
-    box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.45);
+    box-shadow: 0 12px 28px -6px rgba(99, 102, 241, 0.12), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
     transform: translateY(-2px);
   }
 
+  .dark .glass-card-hover:hover {
+    border-color: rgba(129, 140, 248, 0.5);
+    box-shadow: 0 12px 28px -6px rgba(99, 102, 241, 0.25), 0 4px 10px -2px rgba(0, 0, 0, 0.3);
+  }
+
   .glass-input {
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    color: #f8fafc;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: #0f172a;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
     transition: all 0.2s ease;
   }
   .glass-input:focus {
-    border-color: #6366f1;
-    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
+    background: #ffffff;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     outline: none;
+  }
+
+  .dark .glass-input {
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #f8fafc;
+  }
+  .dark .glass-input:focus {
+    background: #1e293b;
+    border-color: #818cf8;
+    box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.25);
   }
 
   .badge-glow {
     box-shadow: 0 0 12px -2px currentColor;
   }
+
+  .lavender-glow {
+    background: radial-gradient(circle at 50% 0%, rgba(199, 210, 254, 0.35) 0%, rgba(248, 250, 252, 0) 70%);
+  }
+
+  .dark .lavender-glow {
+    background: radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.25) 0%, rgba(9, 13, 22, 0) 70%);
+  }
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar - Clean Light Slate */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #090d16;
+  background: #f1f5f9;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #0f172a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #cbd5e1;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+.dark ::-webkit-scrollbar-thumb {
   background: #334155;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
 }

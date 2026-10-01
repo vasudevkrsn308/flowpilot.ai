@@ -24,7 +24,7 @@ export default function VisualPipeline({ template, onActivate, isActivating = fa
       title: '1. Ingestion Trigger',
       subtitle: 'Plain-Language Entrypoint',
       icon: Zap,
-      color: 'from-amber-500/20 to-amber-600/5 text-amber-400 border-amber-500/30',
+      color: 'bg-amber-50 text-amber-600 border-amber-200',
       badge: 'Natural Language',
       details: def.trigger || 'Employee Requisition submitted via Web or Chat'
     },
@@ -33,7 +33,7 @@ export default function VisualPipeline({ template, onActivate, isActivating = fa
       title: '2. AI Classification',
       subtitle: 'Gemini 1.5 Cognitive Engine',
       icon: BrainCircuit,
-      color: 'from-indigo-500/20 to-indigo-600/5 text-brand-400 border-brand-500/30',
+      color: 'bg-indigo-50 text-indigo-600 border-indigo-200',
       badge: 'LLM Powered',
       details: def.classificationNode?.features 
         ? def.classificationNode.features.join(' • ') 
@@ -44,7 +44,7 @@ export default function VisualPipeline({ template, onActivate, isActivating = fa
       title: '3. Policy Verification',
       subtitle: 'Rules & Governance Engine',
       icon: ShieldCheck,
-      color: 'from-emerald-500/20 to-emerald-600/5 text-emerald-400 border-emerald-500/30',
+      color: 'bg-emerald-50 text-emerald-600 border-emerald-200',
       badge: `${def.policyRules?.length || 2} Active Rules`,
       details: def.policyRules?.map(r => `${r.name}: ${r.condition}`).join(' | ') || 'Spend limit matrix & prohibited vendor checks'
     },
@@ -53,7 +53,7 @@ export default function VisualPipeline({ template, onActivate, isActivating = fa
       title: '4. Human Authorization',
       subtitle: 'Routing Matrix',
       icon: UserCheck,
-      color: 'from-purple-500/20 to-purple-600/5 text-purple-400 border-purple-500/30',
+      color: 'bg-purple-50 text-purple-600 border-purple-200',
       badge: `${def.approvalSteps?.length || 1} Stage`,
       details: def.approvalSteps?.map(s => `${s.role} (${s.timeoutHours || 24}h SLA)`).join(' → ') || 'Direct Department Manager Approval'
     },
@@ -62,7 +62,7 @@ export default function VisualPipeline({ template, onActivate, isActivating = fa
       title: '5. Automated Tasks',
       subtitle: 'Downstream Integration',
       icon: Cog,
-      color: 'from-cyan-500/20 to-cyan-600/5 text-cyan-400 border-cyan-500/30',
+      color: 'bg-cyan-50 text-cyan-600 border-cyan-200',
       badge: `${def.downstreamTasks?.length || 2} Tasks`,
       details: def.downstreamTasks?.map(t => t.task).join(' • ') || 'ERP Purchase Order generation & Asset Registration'
     },
@@ -71,7 +71,7 @@ export default function VisualPipeline({ template, onActivate, isActivating = fa
       title: '6. Stakeholder Alerts',
       subtitle: 'Multi-Channel Push',
       icon: BellRing,
-      color: 'from-rose-500/20 to-rose-600/5 text-rose-400 border-rose-500/30',
+      color: 'bg-rose-50 text-rose-600 border-rose-200',
       badge: 'Real-time',
       details: def.notifications?.map(n => `${n.channel} (${n.target})`).join(' • ') || 'In-app push notifications & Slack webhooks'
     }
@@ -80,32 +80,32 @@ export default function VisualPipeline({ template, onActivate, isActivating = fa
   return (
     <div className="w-full space-y-6">
       {/* Pipeline Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl glass-card border border-brand-500/30 shadow-glow">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-3xl bg-white border border-slate-200/90 shadow-xs">
         <div>
           <div className="flex items-center gap-3">
-            <span className={`px-2.5 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider border ${
+            <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider border shadow-xs ${
               isActive 
-                ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30' 
-                : 'bg-amber-500/10 text-amber-400 border-amber-500/30'
+                ? 'bg-emerald-50 text-emerald-800 border-emerald-200' 
+                : 'bg-amber-50 text-amber-800 border-amber-200'
             }`}>
-              {isActive ? '● Live & Active' : '○ Draft Staging'}
+              {isActive ? '● Live & Active Pipeline' : '○ Draft Staging'}
             </span>
-            <span className="text-xs font-mono text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded">
+            <span className="text-xs font-mono font-semibold text-slate-600 bg-slate-100 px-2.5 py-0.5 rounded-md border border-slate-200">
               {template.category || 'General Workflow'}
             </span>
           </div>
-          <h2 className="text-xl font-bold text-white mt-1.5">{template.name}</h2>
-          <p className="text-sm text-slate-400 mt-0.5">{template.description}</p>
+          <h2 className="text-xl font-extrabold text-slate-900 mt-2 tracking-tight">{template.name}</h2>
+          <p className="text-sm text-slate-500 mt-0.5">{template.description}</p>
         </div>
 
         {onActivate && (
           <button
             onClick={onActivate}
             disabled={isActivating}
-            className={`px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 flex items-center gap-2 shadow-lg ${
+            className={`px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-200 flex items-center gap-2 shadow-xs ${
               isActive
-                ? 'bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700'
-                : 'bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white shadow-glow border border-brand-400/40'
+                ? 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300'
+                : 'bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white shadow-xs'
             }`}
           >
             <CheckCircle2 className="w-4 h-4" />
@@ -115,43 +115,43 @@ export default function VisualPipeline({ template, onActivate, isActivating = fa
       </div>
 
       {/* Visual Pipeline Node Sequence */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {nodes.map((node, index) => {
           const Icon = node.icon;
           return (
             <div 
               key={node.id}
-              className="relative group p-5 rounded-2xl glass-card border transition-all duration-300 hover:border-brand-500/50 hover:-translate-y-1 hover:shadow-glow flex flex-col justify-between"
+              className="relative group p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:shadow-card-hover hover:border-brand-300 transition-all duration-200 hover:-translate-y-1 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-start justify-between">
-                  <div className={`p-2.5 rounded-xl bg-gradient-to-br ${node.color} border shadow-sm`}>
+                  <div className={`p-3 rounded-xl ${node.color} border shadow-xs group-hover:scale-105 transition-transform duration-200`}>
                     <Icon className="w-5 h-5" />
                   </div>
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                  <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200">
                     {node.badge}
                   </span>
                 </div>
 
-                <div className="mt-3.5">
-                  <p className="text-xs font-bold uppercase tracking-wider text-slate-500">{node.subtitle}</p>
-                  <h4 className="text-base font-bold text-white group-hover:text-brand-300 transition-colors">
+                <div className="mt-4">
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">{node.subtitle}</p>
+                  <h4 className="text-base font-extrabold text-slate-900 group-hover:text-brand-600 transition-colors mt-0.5">
                     {node.title}
                   </h4>
                 </div>
 
-                <p className="mt-2 text-xs text-slate-300 leading-relaxed font-sans bg-slate-900/60 p-2.5 rounded-lg border border-slate-800/80">
+                <p className="mt-3 text-xs text-slate-600 leading-relaxed font-sans bg-slate-50 p-3 rounded-xl border border-slate-100">
                   {node.details}
                 </p>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500">
-                <span className="flex items-center gap-1 font-mono">
+              <div className="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+                <span className="flex items-center gap-1 font-mono font-medium">
                   Stage {index + 1} of 6
                 </span>
                 {index < 5 && (
-                  <span className="flex items-center gap-1 text-brand-400 font-medium">
-                    Next <ArrowRight className="w-3 h-3" />
+                  <span className="flex items-center gap-1 text-brand-600 font-bold group-hover:translate-x-0.5 transition-transform">
+                    Next <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 )}
               </div>

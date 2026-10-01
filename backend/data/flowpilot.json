@@ -32,6 +32,28 @@
       "department": "IT Operations & Infrastructure",
       "createdAt": "2026-10-01T05:11:43.724Z",
       "updatedAt": "2026-10-01T05:11:43.724Z"
+    },
+    {
+      "_id": "swdypbomup48xic",
+      "id": "swdypbomup48xic",
+      "name": "vasudev",
+      "email": "vasudevkrsn308@gmail.com",
+      "passwordHash": "$2b$10$wY8dOep3D7LvBiHNsrjnTON0X/VUsLnatbx6oykTYGvfVfH1pKZve",
+      "role": "Manager",
+      "department": "Engineering",
+      "createdAt": "2026-10-01T05:51:09.732Z",
+      "updatedAt": "2026-10-01T05:51:09.732Z"
+    },
+    {
+      "_id": "4zj6pvrmup4g4rd",
+      "id": "4zj6pvrmup4g4rd",
+      "name": "Niat",
+      "email": "niathackthon@gmail.com",
+      "passwordHash": "$2b$10$hBQsMsNcYRmBohlBRgBpOed/s7vfzFLSWe/PkJQ7RKsHFwLmioPHm",
+      "role": "Employee",
+      "department": "Engineering",
+      "createdAt": "2026-10-01T05:56:45.721Z",
+      "updatedAt": "2026-10-01T05:56:45.721Z"
     }
   ],
   "requests": [
@@ -60,7 +82,7 @@
         "suggestedApproverRole": "Manager",
         "sentimentOrIntent": "Standard new hire hardware requisition"
       },
-      "status": "PENDING_APPROVAL",
+      "status": "COMPLETED",
       "policyResult": {
         "passed": true,
         "requiresApproval": true,
@@ -74,7 +96,7 @@
       },
       "assignedApproverId": "5je8q3rmup2u7vw",
       "assignedApproverName": "Sarah Jenkins",
-      "currentStep": "Manager Approval",
+      "currentStep": "Completed",
       "workflowSteps": [
         {
           "id": "step-1",
@@ -100,27 +122,27 @@
         {
           "id": "step-4",
           "name": "Manager Approval",
-          "status": "CURRENT",
-          "timestamp": "2026-10-01T04:16:43.726Z",
-          "details": "Awaiting review from Sarah Jenkins"
+          "status": "DONE",
+          "timestamp": "2026-10-01T06:09:50.957Z",
+          "details": "Authorized by vasudev (Manager): \"Approved\""
         },
         {
           "id": "step-5",
           "name": "Procurement",
-          "status": "UPCOMING",
-          "timestamp": null,
-          "details": "Purchase Order dispatch"
+          "status": "DONE",
+          "timestamp": "2026-10-01T06:09:56.852Z",
+          "details": "Purchase Order generated. Transmitted to IT Procurement team."
         },
         {
           "id": "step-6",
           "name": "Completed",
-          "status": "UPCOMING",
-          "timestamp": null,
-          "details": "Final delivery & inventory check"
+          "status": "DONE",
+          "timestamp": "2026-10-01T06:09:56.852Z",
+          "details": "Assets delivered and confirmed received"
         }
       ],
       "createdAt": "2026-10-01T05:11:43.726Z",
-      "updatedAt": "2026-10-01T05:11:43.726Z"
+      "updatedAt": "2026-10-01T06:09:56.852Z"
     },
     {
       "_id": "wyvdwbnmup2u7vz",
@@ -147,7 +169,7 @@
         "suggestedApproverRole": "Manager",
         "sentimentOrIntent": "Ergonomics upgrade"
       },
-      "status": "APPROVED",
+      "status": "COMPLETED",
       "policyResult": {
         "passed": true,
         "requiresApproval": true,
@@ -160,7 +182,7 @@
       },
       "assignedApproverId": "5je8q3rmup2u7vw",
       "assignedApproverName": "Sarah Jenkins",
-      "currentStep": "Procurement",
+      "currentStep": "Completed",
       "workflowSteps": [
         {
           "id": "step-1",
@@ -193,20 +215,20 @@
         {
           "id": "step-5",
           "name": "Procurement",
-          "status": "CURRENT",
-          "timestamp": "2026-09-30T17:15:03.727Z",
+          "status": "DONE",
+          "timestamp": "2026-10-01T06:23:39.276Z",
           "details": "PO-2026-449102 generated and sent to vendor"
         },
         {
           "id": "step-6",
           "name": "Completed",
-          "status": "UPCOMING",
-          "timestamp": null,
-          "details": "Shipment in transit"
+          "status": "DONE",
+          "timestamp": "2026-10-01T06:23:39.276Z",
+          "details": "Assets delivered and confirmed received"
         }
       ],
       "createdAt": "2026-10-01T05:11:43.727Z",
-      "updatedAt": "2026-10-01T05:11:43.727Z"
+      "updatedAt": "2026-10-01T06:23:39.276Z"
     },
     {
       "_id": "2dayp27mup2u7w0",
@@ -467,6 +489,180 @@
       ],
       "createdAt": "2026-10-01T05:44:33.796Z",
       "updatedAt": "2026-10-01T05:44:33.812Z"
+    },
+    {
+      "_id": "qohd1fgmup4cjko",
+      "id": "qohd1fgmup4cjko",
+      "userId": "swdypbomup48xic",
+      "userName": "vasudev",
+      "userEmail": "vasudevkrsn308@gmail.com",
+      "rawText": "i need  10 generator for rs 100000",
+      "category": "Hardware & IT Equipment",
+      "structuredData": {
+        "category": "Hardware & IT Equipment",
+        "items": [
+          {
+            "type": "Laptop Computer",
+            "quantity": 10,
+            "description": "10x Laptop Computer requested for project / onboarding"
+          }
+        ],
+        "estimatedAmount": 100000,
+        "currency": "INR",
+        "priority": "Medium",
+        "urgencyReason": "Standard business request timeline",
+        "suggestedApprovalRequired": true,
+        "suggestedApproverRole": "Manager",
+        "sentimentOrIntent": "Business procurement requisition extracted with high confidence"
+      },
+      "status": "COMPLETED",
+      "policyResult": {
+        "passed": true,
+        "requiresApproval": true,
+        "approvalLevel": "Manager",
+        "reason": "Requires Department Manager authorization (INR 1,00,000) per corporate spend policy.",
+        "matchedRules": [
+          "POL-02: Standard Tier Requisition (₹15,001 - ₹1,00,000)",
+          "POL-HW: Standard IT Hardware Catalog verification active"
+        ],
+        "budgetStatus": "STANDARD_MANAGER_REQUIRED"
+      },
+      "assignedApproverId": "swdypbomup48xic",
+      "assignedApproverName": "vasudev",
+      "currentStep": "Completed",
+      "workflowSteps": [
+        {
+          "id": "step-1",
+          "name": "Request Created",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:53:58.296Z",
+          "details": "Plain language requisition submitted and queued for ingestion"
+        },
+        {
+          "id": "step-2",
+          "name": "AI Analysis",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:53:58.296Z",
+          "details": "Identified 1 item(s) in category: \"Hardware & IT Equipment\" with estimated value INR 1,00,000"
+        },
+        {
+          "id": "step-3",
+          "name": "Policy Check",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:53:58.296Z",
+          "details": "Requires Department Manager authorization (INR 1,00,000) per corporate spend policy."
+        },
+        {
+          "id": "step-4",
+          "name": "Manager Approval",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:54:08.109Z",
+          "details": "Authorized by vasudev (Manager): \"Approved\""
+        },
+        {
+          "id": "step-5",
+          "name": "Procurement",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:54:25.904Z",
+          "details": "Purchase Order generated. Transmitted to IT Procurement team."
+        },
+        {
+          "id": "step-6",
+          "name": "Completed",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:54:25.904Z",
+          "details": "Assets delivered and confirmed received"
+        }
+      ],
+      "createdAt": "2026-10-01T05:53:58.296Z",
+      "updatedAt": "2026-10-01T05:54:25.904Z"
+    },
+    {
+      "_id": "vpqp53ymup4ipfb",
+      "id": "vpqp53ymup4ipfb",
+      "userId": "swdypbomup48xic",
+      "userName": "vasudev",
+      "userEmail": "vasudevkrsn308@gmail.com",
+      "rawText": "i need 5 mobile",
+      "category": "Hardware & IT Equipment",
+      "structuredData": {
+        "category": "Hardware & IT Equipment",
+        "items": [
+          {
+            "type": "Laptop Computer",
+            "quantity": 5,
+            "description": "5x Laptop Computer requested for project / onboarding"
+          }
+        ],
+        "estimatedAmount": 125000,
+        "currency": "INR",
+        "priority": "Medium",
+        "urgencyReason": "Standard business request timeline",
+        "suggestedApprovalRequired": true,
+        "suggestedApproverRole": "Director / VP",
+        "sentimentOrIntent": "Business procurement requisition extracted with high confidence"
+      },
+      "status": "COMPLETED",
+      "policyResult": {
+        "passed": true,
+        "requiresApproval": true,
+        "approvalLevel": "Director / VP",
+        "reason": "High-value procurement exceeding ₹1,00,000. Escalated to Director / VP level review per financial governance rules.",
+        "matchedRules": [
+          "POL-03: Capital Expenditure Tier (> ₹1,00,000)",
+          "POL-HW: Standard IT Hardware Catalog verification active"
+        ],
+        "budgetStatus": "HIGH_VALUE_ESCALATION"
+      },
+      "assignedApproverId": "swdypbomup48xic",
+      "assignedApproverName": "vasudev",
+      "currentStep": "Completed",
+      "workflowSteps": [
+        {
+          "id": "step-1",
+          "name": "Request Created",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:58:45.815Z",
+          "details": "Plain language requisition submitted and queued for ingestion"
+        },
+        {
+          "id": "step-2",
+          "name": "AI Analysis",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:58:45.815Z",
+          "details": "Identified 1 item(s) in category: \"Hardware & IT Equipment\" with estimated value INR 1,25,000"
+        },
+        {
+          "id": "step-3",
+          "name": "Policy Check",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:58:45.815Z",
+          "details": "High-value procurement exceeding ₹1,00,000. Escalated to Director / VP level review per financial governance rules."
+        },
+        {
+          "id": "step-4",
+          "name": "Director / VP Approval",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:58:54.160Z",
+          "details": "Authorized by vasudev (Manager): \"Approved\""
+        },
+        {
+          "id": "step-5",
+          "name": "Procurement",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:59:01.498Z",
+          "details": "Purchase Order generated. Transmitted to IT Procurement team."
+        },
+        {
+          "id": "step-6",
+          "name": "Completed",
+          "status": "DONE",
+          "timestamp": "2026-10-01T05:59:01.498Z",
+          "details": "Assets delivered and confirmed received"
+        }
+      ],
+      "createdAt": "2026-10-01T05:58:45.815Z",
+      "updatedAt": "2026-10-01T05:59:01.498Z"
     }
   ],
   "approvals": [
@@ -493,6 +689,42 @@
       "comment": "Approved for Q1 engineering expansion. Proceed with procurement.",
       "createdAt": "2026-10-01T05:44:33.803Z",
       "updatedAt": "2026-10-01T05:44:33.803Z"
+    },
+    {
+      "_id": "pceydgmmup4cr59",
+      "id": "pceydgmmup4cr59",
+      "requestId": "qohd1fgmup4cjko",
+      "approverId": "swdypbomup48xic",
+      "approverName": "vasudev",
+      "approverRole": "Manager",
+      "decision": "APPROVED",
+      "comment": "Approved for fulfillment",
+      "createdAt": "2026-10-01T05:54:08.109Z",
+      "updatedAt": "2026-10-01T05:54:08.109Z"
+    },
+    {
+      "_id": "fyv8g5wmup4ivv4",
+      "id": "fyv8g5wmup4ivv4",
+      "requestId": "vpqp53ymup4ipfb",
+      "approverId": "swdypbomup48xic",
+      "approverName": "vasudev",
+      "approverRole": "Manager",
+      "decision": "APPROVED",
+      "comment": "Approved for fulfillment",
+      "createdAt": "2026-10-01T05:58:54.160Z",
+      "updatedAt": "2026-10-01T05:58:54.160Z"
+    },
+    {
+      "_id": "q7y16mnmup4wynh",
+      "id": "q7y16mnmup4wynh",
+      "requestId": "m5iokgumup2u7vy",
+      "approverId": "swdypbomup48xic",
+      "approverName": "vasudev",
+      "approverRole": "Manager",
+      "decision": "APPROVED",
+      "comment": "Approved for fulfillment",
+      "createdAt": "2026-10-01T06:09:50.957Z",
+      "updatedAt": "2026-10-01T06:09:50.957Z"
     }
   ],
   "procurementtasks": [
@@ -502,7 +734,7 @@
       "requestId": "wyvdwbnmup2u7vz",
       "type": "PROCUREMENT",
       "title": "Procurement for Office Infrastructure & Ergonomics",
-      "status": "IN_PROGRESS",
+      "status": "COMPLETED",
       "assignedTo": "Central IT Procurement Desk",
       "vendor": "Featherlite Corporate Commercial Furnishings",
       "estimatedDeliveryDate": "Oct 6, 2026",
@@ -520,7 +752,7 @@
         "notes": "Vendor has confirmed dispatch for Monday delivery"
       },
       "createdAt": "2026-10-01T05:11:43.727Z",
-      "updatedAt": "2026-10-01T05:11:43.727Z"
+      "updatedAt": "2026-10-01T06:23:39.273Z"
     },
     {
       "_id": "0se1cyqmup348x9",
@@ -573,6 +805,84 @@
       },
       "createdAt": "2026-10-01T05:44:33.806Z",
       "updatedAt": "2026-10-01T05:44:33.811Z"
+    },
+    {
+      "_id": "s4ole1lmup4cr5c",
+      "id": "s4ole1lmup4cr5c",
+      "requestId": "qohd1fgmup4cjko",
+      "type": "PROCUREMENT",
+      "title": "Procurement for Hardware & IT Equipment",
+      "status": "COMPLETED",
+      "assignedTo": "Central IT Procurement Desk",
+      "vendor": "Dell & Apple Enterprise Fulfillment",
+      "estimatedDeliveryDate": "Oct 6, 2026",
+      "details": {
+        "items": [
+          {
+            "type": "Laptop Computer",
+            "quantity": 10,
+            "description": "10x Laptop Computer requested for project / onboarding"
+          }
+        ],
+        "totalAmount": 100000,
+        "currency": "INR",
+        "poNumber": "PO-2026-889494",
+        "notes": "Automated PO triggered by FlowPilot AI after Manager Approval by vasudev"
+      },
+      "createdAt": "2026-10-01T05:54:08.112Z",
+      "updatedAt": "2026-10-01T05:54:25.901Z"
+    },
+    {
+      "_id": "dg888nymup4ivv6",
+      "id": "dg888nymup4ivv6",
+      "requestId": "vpqp53ymup4ipfb",
+      "type": "PROCUREMENT",
+      "title": "Procurement for Hardware & IT Equipment",
+      "status": "COMPLETED",
+      "assignedTo": "Central IT Procurement Desk",
+      "vendor": "Dell & Apple Enterprise Fulfillment",
+      "estimatedDeliveryDate": "Oct 6, 2026",
+      "details": {
+        "items": [
+          {
+            "type": "Laptop Computer",
+            "quantity": 5,
+            "description": "5x Laptop Computer requested for project / onboarding"
+          }
+        ],
+        "totalAmount": 125000,
+        "currency": "INR",
+        "poNumber": "PO-2026-129373",
+        "notes": "Automated PO triggered by FlowPilot AI after Manager Approval by vasudev"
+      },
+      "createdAt": "2026-10-01T05:58:54.162Z",
+      "updatedAt": "2026-10-01T05:59:01.496Z"
+    },
+    {
+      "_id": "22yeurrmup4wyno",
+      "id": "22yeurrmup4wyno",
+      "requestId": "m5iokgumup2u7vy",
+      "type": "PROCUREMENT",
+      "title": "Procurement for Hardware & IT Equipment",
+      "status": "COMPLETED",
+      "assignedTo": "Central IT Procurement Desk",
+      "vendor": "Dell & Apple Enterprise Fulfillment",
+      "estimatedDeliveryDate": "Oct 6, 2026",
+      "details": {
+        "items": [
+          {
+            "type": "Laptop Computer",
+            "quantity": 5,
+            "description": "5x Core i7 Enterprise Laptops for Q4 new hire engineering cohort"
+          }
+        ],
+        "totalAmount": 75000,
+        "currency": "INR",
+        "poNumber": "PO-2026-796335",
+        "notes": "Automated PO triggered by FlowPilot AI after Manager Approval by vasudev"
+      },
+      "createdAt": "2026-10-01T06:09:50.964Z",
+      "updatedAt": "2026-10-01T06:09:56.849Z"
     }
   ],
   "notifications": [
@@ -584,7 +894,8 @@
       "type": "ACTION_REQUIRED",
       "link": "/requests/m5iokgumup2u7vy",
       "createdAt": "2026-10-01T05:11:43.728Z",
-      "updatedAt": "2026-10-01T05:11:43.728Z"
+      "updatedAt": "2026-10-01T07:04:00.205Z",
+      "read": true
     },
     {
       "_id": "n8hp2d0mup2u7w1",
@@ -624,7 +935,8 @@
       "type": "ACTION_REQUIRED",
       "link": "/requests/nvxkdhimup348u4",
       "createdAt": "2026-10-01T05:19:31.522Z",
-      "updatedAt": "2026-10-01T05:19:31.522Z"
+      "updatedAt": "2026-10-01T07:03:55.727Z",
+      "read": true
     },
     {
       "_id": "j5q220vmup348xb",
@@ -664,7 +976,8 @@
       "type": "ACTION_REQUIRED",
       "link": "/requests/x8n3bxtmup40g04",
       "createdAt": "2026-10-01T05:44:33.797Z",
-      "updatedAt": "2026-10-01T05:44:33.797Z"
+      "updatedAt": "2026-10-01T07:03:49.966Z",
+      "read": true
     },
     {
       "_id": "jbvww0cmup40g0f",
@@ -685,6 +998,116 @@
       "link": "/requests/x8n3bxtmup40g04",
       "createdAt": "2026-10-01T05:44:33.813Z",
       "updatedAt": "2026-10-01T05:44:33.813Z"
+    },
+    {
+      "_id": "wgl47r6mup4cjkp",
+      "id": "wgl47r6mup4cjkp",
+      "userId": "swdypbomup48xic",
+      "message": "Requisition created: \"i need  10 generator for rs 100000...\". AI has routed this to vasudev for authorization.",
+      "type": "INFO",
+      "link": "/requests/qohd1fgmup4cjko",
+      "createdAt": "2026-10-01T05:53:58.297Z",
+      "updatedAt": "2026-10-01T05:53:58.297Z"
+    },
+    {
+      "_id": "wra5xicmup4cjkq",
+      "id": "wra5xicmup4cjkq",
+      "userId": "swdypbomup48xic",
+      "message": "⚡ New Approval Required: vasudev requested 1 item(s) (INR 1,00,000).",
+      "type": "ACTION_REQUIRED",
+      "link": "/requests/qohd1fgmup4cjko",
+      "createdAt": "2026-10-01T05:53:58.298Z",
+      "updatedAt": "2026-10-01T05:53:58.298Z"
+    },
+    {
+      "_id": "b7htoifmup4cr5e",
+      "id": "b7htoifmup4cr5e",
+      "userId": "swdypbomup48xic",
+      "message": "🎉 Great news! Your request \"i need  10 generator for rs 100000...\" was APPROVED by vasudev. Procurement Order PO-2026-889494 has been opened.",
+      "type": "SUCCESS",
+      "link": "/requests/qohd1fgmup4cjko",
+      "createdAt": "2026-10-01T05:54:08.114Z",
+      "updatedAt": "2026-10-01T05:54:08.114Z"
+    },
+    {
+      "_id": "k3ksaqwmup4d4vn",
+      "id": "k3ksaqwmup4d4vn",
+      "userId": "swdypbomup48xic",
+      "message": "📦 Shipment Completed! Your requisition \"i need  10 generator for rs 100000...\" has arrived.",
+      "type": "SUCCESS",
+      "link": "/requests/qohd1fgmup4cjko",
+      "createdAt": "2026-10-01T05:54:25.907Z",
+      "updatedAt": "2026-10-01T05:54:25.907Z"
+    },
+    {
+      "_id": "vpp8qtrmup4ipfd",
+      "id": "vpp8qtrmup4ipfd",
+      "userId": "swdypbomup48xic",
+      "message": "Requisition created: \"i need 5 mobile...\". AI has routed this to vasudev for authorization.",
+      "type": "INFO",
+      "link": "/requests/vpqp53ymup4ipfb",
+      "createdAt": "2026-10-01T05:58:45.817Z",
+      "updatedAt": "2026-10-01T05:58:45.817Z"
+    },
+    {
+      "_id": "mn6936gmup4ipff",
+      "id": "mn6936gmup4ipff",
+      "userId": "swdypbomup48xic",
+      "message": "⚡ New Approval Required: vasudev requested 1 item(s) (INR 1,25,000).",
+      "type": "ACTION_REQUIRED",
+      "link": "/requests/vpqp53ymup4ipfb",
+      "createdAt": "2026-10-01T05:58:45.819Z",
+      "updatedAt": "2026-10-01T05:58:45.819Z"
+    },
+    {
+      "_id": "bnfqi9amup4ivv8",
+      "id": "bnfqi9amup4ivv8",
+      "userId": "swdypbomup48xic",
+      "message": "🎉 Great news! Your request \"i need 5 mobile...\" was APPROVED by vasudev. Procurement Order PO-2026-129373 has been opened.",
+      "type": "SUCCESS",
+      "link": "/requests/vpqp53ymup4ipfb",
+      "createdAt": "2026-10-01T05:58:54.164Z",
+      "updatedAt": "2026-10-01T05:58:54.164Z"
+    },
+    {
+      "_id": "g86a4ivmup4j1j4",
+      "id": "g86a4ivmup4j1j4",
+      "userId": "swdypbomup48xic",
+      "message": "📦 Shipment Completed! Your requisition \"i need 5 mobile...\" has arrived.",
+      "type": "SUCCESS",
+      "link": "/requests/vpqp53ymup4ipfb",
+      "createdAt": "2026-10-01T05:59:01.504Z",
+      "updatedAt": "2026-10-01T05:59:01.504Z"
+    },
+    {
+      "_id": "rvyq4uwmup4wynq",
+      "id": "rvyq4uwmup4wynq",
+      "userId": "cezsrh2mup2u7vv",
+      "message": "🎉 Great news! Your request \"I need 5 laptops for new hires, budget ₹75,00...\" was APPROVED by vasudev. Procurement Order PO-2026-796335 has been opened.",
+      "type": "SUCCESS",
+      "link": "/requests/m5iokgumup2u7vy",
+      "createdAt": "2026-10-01T06:09:50.966Z",
+      "updatedAt": "2026-10-01T06:09:50.966Z"
+    },
+    {
+      "_id": "iollp3emup4x37c",
+      "id": "iollp3emup4x37c",
+      "userId": "cezsrh2mup2u7vv",
+      "message": "📦 Shipment Completed! Your requisition \"I need 5 laptops for new hires, budget ₹...\" has arrived.",
+      "type": "SUCCESS",
+      "link": "/requests/m5iokgumup2u7vy",
+      "createdAt": "2026-10-01T06:09:56.856Z",
+      "updatedAt": "2026-10-01T06:09:56.856Z"
+    },
+    {
+      "_id": "4eo153umup5epsh",
+      "id": "4eo153umup5epsh",
+      "userId": "cezsrh2mup2u7vv",
+      "message": "📦 Shipment Completed! Your requisition \"Ergonomic task chairs (3 units) for the ...\" has arrived.",
+      "type": "SUCCESS",
+      "link": "/requests/wyvdwbnmup2u7vz",
+      "createdAt": "2026-10-01T06:23:39.281Z",
+      "updatedAt": "2026-10-01T06:23:39.281Z"
     }
   ],
   "auditlogs": [
@@ -1052,6 +1475,360 @@
       },
       "createdAt": "2026-10-01T05:44:33.820Z",
       "updatedAt": "2026-10-01T05:44:33.820Z"
+    },
+    {
+      "_id": "2c6tqkumup48xih",
+      "id": "2c6tqkumup48xih",
+      "entityType": "AUTH",
+      "entityId": "swdypbomup48xic",
+      "action": "USER_REGISTERED",
+      "actorId": "swdypbomup48xic",
+      "actorName": "vasudev",
+      "actorRole": "Manager",
+      "summary": "New user vasudev registered with role Manager",
+      "metadata": {},
+      "createdAt": "2026-10-01T05:51:09.737Z",
+      "updatedAt": "2026-10-01T05:51:09.737Z"
+    },
+    {
+      "_id": "g0x172wmup4cjks",
+      "id": "g0x172wmup4cjks",
+      "entityType": "REQUEST",
+      "entityId": "qohd1fgmup4cjko",
+      "action": "CREATED",
+      "actorId": "swdypbomup48xic",
+      "actorName": "vasudev",
+      "actorRole": "Manager",
+      "summary": "Employee submitted request: \"i need  10 generator for rs 100000...\"",
+      "metadata": {
+        "rawText": "i need  10 generator for rs 100000"
+      },
+      "createdAt": "2026-10-01T05:53:58.300Z",
+      "updatedAt": "2026-10-01T05:53:58.300Z"
+    },
+    {
+      "_id": "n2ih8ddmup4cjkt",
+      "id": "n2ih8ddmup4cjkt",
+      "entityType": "REQUEST",
+      "entityId": "qohd1fgmup4cjko",
+      "action": "ANALYZED",
+      "actorId": "SYSTEM",
+      "actorName": "FlowPilot Gemini AI Engine",
+      "actorRole": "SYSTEM",
+      "summary": "AI parsed 1 item(s), estimated value INR 100000.",
+      "metadata": {
+        "category": "Hardware & IT Equipment",
+        "items": [
+          {
+            "type": "Laptop Computer",
+            "quantity": 10,
+            "description": "10x Laptop Computer requested for project / onboarding"
+          }
+        ],
+        "estimatedAmount": 100000,
+        "currency": "INR",
+        "priority": "Medium",
+        "urgencyReason": "Standard business request timeline",
+        "suggestedApprovalRequired": true,
+        "suggestedApproverRole": "Manager",
+        "sentimentOrIntent": "Business procurement requisition extracted with high confidence"
+      },
+      "createdAt": "2026-10-01T05:53:58.301Z",
+      "updatedAt": "2026-10-01T05:53:58.301Z"
+    },
+    {
+      "_id": "aeyvtssmup4cjku",
+      "id": "aeyvtssmup4cjku",
+      "entityType": "REQUEST",
+      "entityId": "qohd1fgmup4cjko",
+      "action": "POLICY_EVALUATED",
+      "actorId": "SYSTEM",
+      "actorName": "FlowPilot Policy Matrix",
+      "actorRole": "SYSTEM",
+      "summary": "Policy check: Manager Approval Required (STANDARD_MANAGER_REQUIRED).",
+      "metadata": {
+        "passed": true,
+        "requiresApproval": true,
+        "approvalLevel": "Manager",
+        "reason": "Requires Department Manager authorization (INR 1,00,000) per corporate spend policy.",
+        "matchedRules": [
+          "POL-02: Standard Tier Requisition (₹15,001 - ₹1,00,000)",
+          "POL-HW: Standard IT Hardware Catalog verification active"
+        ],
+        "budgetStatus": "STANDARD_MANAGER_REQUIRED"
+      },
+      "createdAt": "2026-10-01T05:53:58.302Z",
+      "updatedAt": "2026-10-01T05:53:58.302Z"
+    },
+    {
+      "_id": "y5agdp1mup4cr5h",
+      "id": "y5agdp1mup4cr5h",
+      "entityType": "REQUEST",
+      "entityId": "qohd1fgmup4cjko",
+      "action": "APPROVED",
+      "actorId": "swdypbomup48xic",
+      "actorName": "vasudev",
+      "actorRole": "Manager",
+      "summary": "Request approved by vasudev (Manager). Created Procurement Task PO-2026-889494.",
+      "metadata": {
+        "decision": "APPROVED",
+        "comment": "",
+        "poNumber": "PO-2026-889494",
+        "taskId": "s4ole1lmup4cr5c"
+      },
+      "createdAt": "2026-10-01T05:54:08.117Z",
+      "updatedAt": "2026-10-01T05:54:08.117Z"
+    },
+    {
+      "_id": "e1gt11wmup4cr5j",
+      "id": "e1gt11wmup4cr5j",
+      "entityType": "TASK",
+      "entityId": "s4ole1lmup4cr5c",
+      "action": "TASK_GENERATED",
+      "actorId": "SYSTEM",
+      "actorName": "FlowPilot Automation Engine",
+      "actorRole": "SYSTEM",
+      "summary": "Downstream Procurement Order PO-2026-889494 created automatically for Hardware & IT Equipment.",
+      "metadata": {
+        "poNumber": "PO-2026-889494",
+        "estimatedDeliveryDate": "Oct 6, 2026"
+      },
+      "createdAt": "2026-10-01T05:54:08.119Z",
+      "updatedAt": "2026-10-01T05:54:08.119Z"
+    },
+    {
+      "_id": "v9aa3oamup4d4vt",
+      "id": "v9aa3oamup4d4vt",
+      "entityType": "TASK",
+      "entityId": "s4ole1lmup4cr5c",
+      "action": "COMPLETED",
+      "actorId": "swdypbomup48xic",
+      "actorName": "vasudev",
+      "actorRole": "Manager",
+      "summary": "Procurement fulfillment completed for Request #qohd1fgmup4cjko.",
+      "metadata": {
+        "newStatus": "COMPLETED"
+      },
+      "createdAt": "2026-10-01T05:54:25.913Z",
+      "updatedAt": "2026-10-01T05:54:25.913Z"
+    },
+    {
+      "_id": "oskyz1wmup4g4rp",
+      "id": "oskyz1wmup4g4rp",
+      "entityType": "AUTH",
+      "entityId": "4zj6pvrmup4g4rd",
+      "action": "USER_REGISTERED",
+      "actorId": "4zj6pvrmup4g4rd",
+      "actorName": "Niat",
+      "actorRole": "Employee",
+      "summary": "New user Niat registered with role Employee",
+      "metadata": {},
+      "createdAt": "2026-10-01T05:56:45.733Z",
+      "updatedAt": "2026-10-01T05:56:45.733Z"
+    },
+    {
+      "_id": "fv6xb0tmup4hm9x",
+      "id": "fv6xb0tmup4hm9x",
+      "entityType": "AUTH",
+      "entityId": "swdypbomup48xic",
+      "action": "USER_LOGIN",
+      "actorId": "swdypbomup48xic",
+      "actorName": "vasudev",
+      "actorRole": "Manager",
+      "summary": "User vasudev logged into FlowPilot portal",
+      "metadata": {},
+      "createdAt": "2026-10-01T05:57:55.077Z",
+      "updatedAt": "2026-10-01T05:57:55.077Z"
+    },
+    {
+      "_id": "7ogpt39mup4ipfg",
+      "id": "7ogpt39mup4ipfg",
+      "entityType": "REQUEST",
+      "entityId": "vpqp53ymup4ipfb",
+      "action": "CREATED",
+      "actorId": "swdypbomup48xic",
+      "actorName": "vasudev",
+      "actorRole": "Manager",
+      "summary": "Employee submitted request: \"i need 5 mobile...\"",
+      "metadata": {
+        "rawText": "i need 5 mobile"
+      },
+      "createdAt": "2026-10-01T05:58:45.820Z",
+      "updatedAt": "2026-10-01T05:58:45.820Z"
+    },
+    {
+      "_id": "qoa2atxmup4ipfh",
+      "id": "qoa2atxmup4ipfh",
+      "entityType": "REQUEST",
+      "entityId": "vpqp53ymup4ipfb",
+      "action": "ANALYZED",
+      "actorId": "SYSTEM",
+      "actorName": "FlowPilot Gemini AI Engine",
+      "actorRole": "SYSTEM",
+      "summary": "AI parsed 1 item(s), estimated value INR 125000.",
+      "metadata": {
+        "category": "Hardware & IT Equipment",
+        "items": [
+          {
+            "type": "Laptop Computer",
+            "quantity": 5,
+            "description": "5x Laptop Computer requested for project / onboarding"
+          }
+        ],
+        "estimatedAmount": 125000,
+        "currency": "INR",
+        "priority": "Medium",
+        "urgencyReason": "Standard business request timeline",
+        "suggestedApprovalRequired": true,
+        "suggestedApproverRole": "Director / VP",
+        "sentimentOrIntent": "Business procurement requisition extracted with high confidence"
+      },
+      "createdAt": "2026-10-01T05:58:45.821Z",
+      "updatedAt": "2026-10-01T05:58:45.821Z"
+    },
+    {
+      "_id": "g34mq1rmup4ipfi",
+      "id": "g34mq1rmup4ipfi",
+      "entityType": "REQUEST",
+      "entityId": "vpqp53ymup4ipfb",
+      "action": "POLICY_EVALUATED",
+      "actorId": "SYSTEM",
+      "actorName": "FlowPilot Policy Matrix",
+      "actorRole": "SYSTEM",
+      "summary": "Policy check: Director / VP Approval Required (HIGH_VALUE_ESCALATION).",
+      "metadata": {
+        "passed": true,
+        "requiresApproval": true,
+        "approvalLevel": "Director / VP",
+        "reason": "High-value procurement exceeding ₹1,00,000. Escalated to Director / VP level review per financial governance rules.",
+        "matchedRules": [
+          "POL-03: Capital Expenditure Tier (> ₹1,00,000)",
+          "POL-HW: Standard IT Hardware Catalog verification active"
+        ],
+        "budgetStatus": "HIGH_VALUE_ESCALATION"
+      },
+      "createdAt": "2026-10-01T05:58:45.822Z",
+      "updatedAt": "2026-10-01T05:58:45.822Z"
+    },
+    {
+      "_id": "5bjbt1gmup4ivv9",
+      "id": "5bjbt1gmup4ivv9",
+      "entityType": "REQUEST",
+      "entityId": "vpqp53ymup4ipfb",
+      "action": "APPROVED",
+      "actorId": "swdypbomup48xic",
+      "actorName": "vasudev",
+      "actorRole": "Manager",
+      "summary": "Request approved by vasudev (Manager). Created Procurement Task PO-2026-129373.",
+      "metadata": {
+        "decision": "APPROVED",
+        "comment": "",
+        "poNumber": "PO-2026-129373",
+        "taskId": "dg888nymup4ivv6"
+      },
+      "createdAt": "2026-10-01T05:58:54.165Z",
+      "updatedAt": "2026-10-01T05:58:54.165Z"
+    },
+    {
+      "_id": "awfdgtwmup4ivve",
+      "id": "awfdgtwmup4ivve",
+      "entityType": "TASK",
+      "entityId": "dg888nymup4ivv6",
+      "action": "TASK_GENERATED",
+      "actorId": "SYSTEM",
+      "actorName": "FlowPilot Automation Engine",
+      "actorRole": "SYSTEM",
+      "summary": "Downstream Procurement Order PO-2026-129373 created automatically for Hardware & IT Equipment.",
+      "metadata": {
+        "poNumber": "PO-2026-129373",
+        "estimatedDeliveryDate": "Oct 6, 2026"
+      },
+      "createdAt": "2026-10-01T05:58:54.170Z",
+      "updatedAt": "2026-10-01T05:58:54.170Z"
+    },
+    {
+      "_id": "8wr0g8tmup4j1j9",
+      "id": "8wr0g8tmup4j1j9",
+      "entityType": "TASK",
+      "entityId": "dg888nymup4ivv6",
+      "action": "COMPLETED",
+      "actorId": "swdypbomup48xic",
+      "actorName": "vasudev",
+      "actorRole": "Manager",
+      "summary": "Procurement fulfillment completed for Request #vpqp53ymup4ipfb.",
+      "metadata": {
+        "newStatus": "COMPLETED"
+      },
+      "createdAt": "2026-10-01T05:59:01.509Z",
+      "updatedAt": "2026-10-01T05:59:01.509Z"
+    },
+    {
+      "_id": "qc6xhnkmup4wynt",
+      "id": "qc6xhnkmup4wynt",
+      "entityType": "REQUEST",
+      "entityId": "m5iokgumup2u7vy",
+      "action": "APPROVED",
+      "actorId": "swdypbomup48xic",
+      "actorName": "vasudev",
+      "actorRole": "Manager",
+      "summary": "Request approved by vasudev (Manager). Created Procurement Task PO-2026-796335.",
+      "metadata": {
+        "decision": "APPROVED",
+        "comment": "",
+        "poNumber": "PO-2026-796335",
+        "taskId": "22yeurrmup4wyno"
+      },
+      "createdAt": "2026-10-01T06:09:50.969Z",
+      "updatedAt": "2026-10-01T06:09:50.969Z"
+    },
+    {
+      "_id": "k25x75mmup4wynw",
+      "id": "k25x75mmup4wynw",
+      "entityType": "TASK",
+      "entityId": "22yeurrmup4wyno",
+      "action": "TASK_GENERATED",
+      "actorId": "SYSTEM",
+      "actorName": "FlowPilot Automation Engine",
+      "actorRole": "SYSTEM",
+      "summary": "Downstream Procurement Order PO-2026-796335 created automatically for Hardware & IT Equipment.",
+      "metadata": {
+        "poNumber": "PO-2026-796335",
+        "estimatedDeliveryDate": "Oct 6, 2026"
+      },
+      "createdAt": "2026-10-01T06:09:50.972Z",
+      "updatedAt": "2026-10-01T06:09:50.972Z"
+    },
+    {
+      "_id": "jkmf9nqmup4x37f",
+      "id": "jkmf9nqmup4x37f",
+      "entityType": "TASK",
+      "entityId": "22yeurrmup4wyno",
+      "action": "COMPLETED",
+      "actorId": "swdypbomup48xic",
+      "actorName": "vasudev",
+      "actorRole": "Manager",
+      "summary": "Procurement fulfillment completed for Request #m5iokgumup2u7vy.",
+      "metadata": {
+        "newStatus": "COMPLETED"
+      },
+      "createdAt": "2026-10-01T06:09:56.859Z",
+      "updatedAt": "2026-10-01T06:09:56.859Z"
+    },
+    {
+      "_id": "cvdwwobmup5epsj",
+      "id": "cvdwwobmup5epsj",
+      "entityType": "TASK",
+      "entityId": "zy09e67mup2u7vz",
+      "action": "COMPLETED",
+      "actorId": "5je8q3rmup2u7vw",
+      "actorName": "Sarah Jenkins",
+      "actorRole": "Manager",
+      "summary": "Procurement fulfillment completed for Request #wyvdwbnmup2u7vz.",
+      "metadata": {
+        "newStatus": "COMPLETED"
+      },
+      "createdAt": "2026-10-01T06:23:39.283Z",
+      "updatedAt": "2026-10-01T06:23:39.283Z"
     }
   ],
   "workflowtemplates": [

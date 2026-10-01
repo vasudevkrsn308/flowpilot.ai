@@ -1,169 +1,327 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useMemo } from 'react';
 import { 
   ClipboardList, 
-  Truck, 
-  CheckCircle2, 
+  Search, 
+  Filter, 
   Clock, 
-  Package, 
-  ArrowRight, 
+  Check, 
+  CheckCircle2, 
+  AlertCircle, 
+  User, 
+  Calendar, 
   Building2, 
-  FileText,
-  DollarSign
+  X,
+  ArrowRight,
+  MoreVertical,
+  Plus
 } from 'lucide-react';
-import { api } from '../services/api';
+import { useWorkflowStore } from '../context/WorkflowStoreContext';
 import { useAuth } from '../context/AuthContext';
-import { useNotifications } from '../context/NotificationContext';
+import { useI18n } from '../context/I18nContext';
+import PriorityBadge from '../components/PriorityBadge';
 import StatusBadge from '../components/StatusBadge';
 
 export default function Tasks() {
-  const navigate = useNavigate();
   const { user } = useAuth();
-  const { showToast } = useNotifications();
+  const { tasks, toggleTask, showToast } = useWorkflowStore();
+  const { t, formatDate } = useI18n();
 
-  const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState('My Tasks'); // 'My Tasks', 'Team Tasks', 'Due Today', 'Overdue', 'Completed Tasks'
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedDept, setSelectedDept] = useState('All');
+  const [selectedPriority, setSelectedPriority] = useState('All');
+  const [selectedTask, setSelectedTask] = useState(null);
 
-  const fetchTasks = async () => {
-    try {
-      setLoading(true);
-      const res = await api.tasks.list();
-      setTasks(res.tasks || []);
-    } catch (err) {
-      showToast(err.message || 'Failed to fetch tasks', 'WARNING');
-    } finally {
-      setLoading(false);
-    }
-  };
+  const filteredTasks = useMemo(() => {
+    return tasks.filter(task => {
+      // Tab filter
+      if (activeTab === 'My Tasks') {
+        // In demo, show tasks assigned to Sarah Mitchell, Alex Johnson, or team
+        if (task.completed) return false;
+      } else if (activeTab === 'Team Tasks') {
+        if (task.completed) return false;
+      } else if (activeTab === 'Due Today') {
+        if (task.completed) return false;
+      } else if (activeTab === 'Overdue') {
+        if (task.completed || task.dueDate >= '2026-10-01') return false;
+      } else if (activeTab === 'Completed Tasks') {
+        if (!task.completed) return false;
+      }
 
-  useEffect(() => {
-    fetchTasks();
-  }, []);
+      // Department filter
+      if (selectedDept !== 'All' && task.department !== selectedDept) return false;
 
-  const handleUpdateStatus = async (id, status) => {
-    try {
-      await api.tasks.updateStatus(id, status);
-      showToast(`Task status updated to ${status}!`, 'SUCCESS');
-      fetchTasks();
-    } catch (err) {
-      showToast(err.message || 'Failed to update task', 'WARNING');
-    }
-  };
+      // Priority filter
+      if (selectedPriority !== 'All' && task.priority !== selectedPriority) return false;
 
-  const isManagerOrAdmin = user?.role === 'Manager' || user?.role === 'Admin';
+      // Search query
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase();
+        return (
+          task.id.toLowerCase().includes(q) ||
+          task.title.toLowerCase().includes(q) ||
+          task.assignee.toLowerCase().includes(q) ||
+          task.relatedOrder.toLowerCase().includes(q)
+        );
+      }
+
+      return true;
+    });
+  }, [tasks, activeTab, selectedDept, selectedPriority, searchQuery]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-fade-in">
       
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200/90 dark:border-slate-800">
         <div>
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
-              Downstream Automation
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-sky-50 dark:bg-sky-950 text-sky-800 dark:text-sky-300 border border-sky-200 dark:border-sky-800">
+              Downstream Task Automation
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white mt-2 tracking-tight">
-            Procurement & Fulfillment Tasks
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-2 tracking-tight">
+            Operational & Procurement Tasks
           </h1>
-          <p className="text-sm text-slate-400 mt-1">
-            Purchase Orders generated automatically upon managerial approval, tracked through vendor delivery.
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+            Track asset tagging, hardware allocations, and delivery sign-offs automatically dispatched upon approval.
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-mono px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300">
-            Total Orders: <strong>{tasks.length}</strong>
-          </span>
+        {/* Tab Toggle Strip */}
+        <div className="flex items-center p-1 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 self-start sm:self-auto overflow-x-auto shadow-2xs">
+          {[
+            { id: 'My Tasks', label: 'My Tasks' },
+            { id: 'Team Tasks', label: 'Team Tasks' },
+            { id: 'Due Today', label: 'Due Today' },
+            { id: 'Overdue', label: 'Overdue' },
+            { id: 'Completed Tasks', label: 'Completed Tasks', check: true }
+          ].map(tab => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap flex items-center gap-1.5 ${
+                activeTab === tab.id
+                  ? tab.check
+                    ? 'bg-emerald-600 text-white shadow-xs'
+                    : 'bg-brand-600 text-white shadow-xs'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              }`}
+            >
+              {tab.check && <Check className="w-3 h-3 stroke-[3]" />}
+              <span>{tab.label}</span>
+            </button>
+          ))}
         </div>
       </div>
 
-      {loading ? (
-        <div className="text-center py-16">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-brand-500 border-t-transparent mb-2"></div>
-          <p className="text-xs text-slate-400">Loading procurement orders...</p>
-        </div>
-      ) : tasks.length === 0 ? (
-        <div className="rounded-3xl glass-card p-12 text-center border border-slate-800">
-          <Truck className="w-12 h-12 text-slate-600 mx-auto mb-3" />
-          <h3 className="text-base font-bold text-white">No Procurement Tasks Active</h3>
-          <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
-            Procurement tasks are created automatically by FlowPilot AI when a manager approves a requisition.
-          </p>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {tasks.map((task) => (
-            <div
-              key={task._id || task.id}
-              className="rounded-3xl glass-card p-6 border border-slate-800 hover:border-cyan-500/40 transition-all flex flex-col justify-between shadow-xl"
+      {/* Filter and Search Bar */}
+      <div className="p-4 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-xs">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="relative flex-1 max-w-md">
+            <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              placeholder="Search tasks by ID, title, assignee, order..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full text-xs pl-8 pr-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500"
+            />
+          </div>
+
+          <div className="flex items-center gap-2.5 flex-wrap">
+            <select
+              value={selectedDept}
+              onChange={(e) => setSelectedDept(e.target.value)}
+              className="text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-2 text-slate-700 dark:text-slate-300 focus:outline-none"
             >
-              <div>
-                <div className="flex items-start justify-between gap-2">
-                  <span className="text-xs font-mono font-bold text-cyan-400 bg-cyan-950/60 px-2.5 py-1 rounded-lg border border-cyan-800/60">
-                    {task.details?.poNumber || 'PO-2026-SYS'}
-                  </span>
-                  <StatusBadge status={task.status} />
+              <option value="All">All Departments</option>
+              <option value="IT">IT</option>
+              <option value="Engineering">Engineering</option>
+              <option value="Operations">Operations</option>
+              <option value="Facilities">Facilities</option>
+              <option value="Platform Team">Platform Team</option>
+            </select>
+
+            <select
+              value={selectedPriority}
+              onChange={(e) => setSelectedPriority(e.target.value)}
+              className="text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-2 text-slate-700 dark:text-slate-300 focus:outline-none"
+            >
+              <option value="All">All Priorities</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      {/* Task List */}
+      <div className="space-y-3">
+        {filteredTasks.length === 0 ? (
+          <div className="p-12 text-center bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-slate-800 text-slate-400">
+            <CheckCircle2 className="w-8 h-8 text-emerald-500 mx-auto mb-2" />
+            <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200">No tasks in this view</h3>
+            <p className="text-xs text-slate-500 mt-1">All downstream fulfillment orders are currently up to date.</p>
+          </div>
+        ) : (
+          filteredTasks.map(task => {
+            const isCompleted = task.completed;
+
+            return (
+              <div
+                key={task.id}
+                onClick={() => setSelectedTask(task)}
+                className={`p-4 sm:p-5 rounded-2xl border transition-all cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
+                  isCompleted
+                    ? 'bg-emerald-50/40 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800/80 shadow-2xs'
+                    : 'bg-white dark:bg-slate-900 border-slate-200/90 dark:border-slate-800 hover:border-brand-300 dark:hover:border-brand-700 shadow-xs'
+                }`}
+              >
+                {/* Left: Checkbox + Title + Meta */}
+                <div className="flex items-start sm:items-center gap-3">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleTask(task.id);
+                    }}
+                    className={`mt-0.5 sm:mt-0 w-6 h-6 rounded-lg border flex items-center justify-center transition-colors shrink-0 ${
+                      isCompleted
+                        ? 'bg-emerald-600 border-emerald-600 text-white'
+                        : 'border-slate-300 dark:border-slate-600 hover:border-emerald-500'
+                    }`}
+                    title={isCompleted ? 'Mark as incomplete' : 'Mark as completed'}
+                  >
+                    {isCompleted && <Check className="w-4 h-4 stroke-[3]" />}
+                  </button>
+
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap mb-1">
+                      <span className="font-mono text-xs font-bold text-slate-400">{task.id}</span>
+                      <span className="font-mono text-xs font-semibold text-brand-600 dark:text-brand-400">
+                        {task.relatedOrder}
+                      </span>
+                      <PriorityBadge priority={task.priority} />
+                      <span className="text-xs text-slate-400">• {task.department}</span>
+                    </div>
+
+                    <h3
+                      className={`text-sm font-bold ${
+                        isCompleted
+                          ? 'text-slate-500 line-through'
+                          : 'text-slate-900 dark:text-white'
+                      }`}
+                    >
+                      {task.title}
+                    </h3>
+                  </div>
                 </div>
 
-                <h3 className="text-base font-bold text-white mt-3">
-                  {task.title}
-                </h3>
-
-                <div className="mt-4 space-y-2 text-xs bg-slate-900/60 p-3.5 rounded-2xl border border-slate-800/80">
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-400">Vendor:</span>
-                    <span className="font-semibold text-slate-200">{task.vendor}</span>
+                {/* Right: Assignee, Due Date & Status */}
+                <div className="flex items-center gap-4 text-xs self-end sm:self-auto shrink-0">
+                  <div className="text-right">
+                    <span className="text-[10px] text-slate-400 block font-mono">Assignee</span>
+                    <span className="font-semibold text-slate-800 dark:text-slate-200">{task.assignee}</span>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-400">Total Value:</span>
-                    <span className="font-bold text-emerald-400 font-mono">
-                      {task.details?.currency || 'INR'} {task.details?.totalAmount?.toLocaleString()}
+
+                  <div className="text-right">
+                    <span className="text-[10px] text-slate-400 block font-mono">Due Date</span>
+                    <span className="font-medium text-slate-600 dark:text-slate-300">{task.dueDate}</span>
+                  </div>
+
+                  {/* Status Badge with green checkmark on Completed */}
+                  {isCompleted ? (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800">
+                      <Check className="w-3.5 h-3.5 stroke-[3] text-emerald-600 dark:text-emerald-400" />
+                      <span>Completed</span>
                     </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-400">ETA Delivery:</span>
-                    <span className="font-medium text-slate-300">{task.estimatedDeliveryDate || '3 Days'}</span>
-                  </div>
+                  ) : (
+                    <StatusBadge status={task.status} size="sm" />
+                  )}
                 </div>
+              </div>
+            );
+          })
+        )}
+      </div>
 
-                {task.details?.items && task.details.items.length > 0 && (
-                  <div className="mt-3 text-[11px] text-slate-400">
-                    <span className="font-semibold text-slate-300">Items: </span>
-                    {task.details.items.map(i => `${i.quantity}x ${i.type}`).join(', ')}
-                  </div>
-                )}
+      {/* Task Details Drawer */}
+      {selectedTask && (
+        <div
+          className="fixed inset-0 z-50 flex justify-end bg-slate-900/50 backdrop-blur-xs animate-fade-in"
+          onClick={() => setSelectedTask(null)}
+        >
+          <div
+            className="w-full sm:max-w-md bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 p-6 overflow-y-auto flex flex-col justify-between shadow-2xl animate-slide-up"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div>
+              <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+                <span className="text-xs font-mono font-bold text-brand-600 dark:text-brand-400">
+                  {selectedTask.id} • TASK DETAILS
+                </span>
+                <button
+                  onClick={() => setSelectedTask(null)}
+                  className="p-1 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
+                >
+                  <X className="w-5 h-5" />
+                </button>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between">
-                <button
-                  onClick={() => navigate(`/requests/${task.requestId}`)}
-                  className="text-xs text-brand-400 hover:text-brand-300 font-semibold flex items-center gap-1"
-                >
-                  View Request <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+              <div className="mt-4">
+                <h2 className="text-base font-bold text-slate-900 dark:text-white">
+                  {selectedTask.title}
+                </h2>
+                <div className="mt-2 flex items-center gap-2">
+                  <StatusBadge status={selectedTask.status} />
+                  <PriorityBadge priority={selectedTask.priority} />
+                </div>
+              </div>
 
-                {isManagerOrAdmin && task.status !== 'COMPLETED' && (
-                  <div className="flex items-center gap-2">
-                    {task.status === 'OPEN' && (
-                      <button
-                        onClick={() => handleUpdateStatus(task._id || task.id, 'IN_PROGRESS')}
-                        className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200"
-                      >
-                        In Transit
-                      </button>
-                    )}
-                    <button
-                      onClick={() => handleUpdateStatus(task._id || task.id, 'COMPLETED')}
-                      className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-glow"
-                    >
-                      Deliver
-                    </button>
+              <div className="mt-6 space-y-3 text-xs p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-400">Related Order:</span>
+                  <span className="font-mono font-bold text-brand-600">{selectedTask.relatedOrder}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-400">Assignee:</span>
+                  <span className="font-bold text-slate-800 dark:text-slate-200">{selectedTask.assignee}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-400">Department:</span>
+                  <span>{selectedTask.department}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-400">Due Date:</span>
+                  <span>{selectedTask.dueDate}</span>
+                </div>
+                {selectedTask.completedAt && (
+                  <div className="flex items-center justify-between text-emerald-600 font-bold">
+                    <span>Completed On:</span>
+                    <span>{selectedTask.completedAt}</span>
                   </div>
                 )}
               </div>
             </div>
-          ))}
+
+            <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex gap-2">
+              <button
+                onClick={() => {
+                  toggleTask(selectedTask.id);
+                  setSelectedTask(null);
+                }}
+                className={`w-full py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+                  selectedTask.completed
+                    ? 'bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200'
+                    : 'bg-emerald-600 hover:bg-emerald-500 text-white'
+                }`}
+              >
+                <Check className="w-4 h-4 stroke-[3]" />
+                <span>{selectedTask.completed ? 'Mark as Incomplete' : 'Mark Task Completed'}</span>
+              </button>
+            </div>
+          </div>
         </div>
       )}
 
